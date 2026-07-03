@@ -1,0 +1,10 @@
+# Large binaries / caches — not committed. Regenerate with scripts/prefetch.py + run_all.py.
+assets/gpt2/pytorch_model.bin
+assets/gpt2/*.bin
+assets/data/*.tsv
+assets/data/*.csv
+results/cache/
+results/run.log
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

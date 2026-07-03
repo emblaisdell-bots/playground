@@ -1,0 +1,57 @@
+# Warm-start probe: master configuration.
+# Every condition / size / seed lives here so sweeps need no code edits.
+
+model:
+  # Local directory holding GPT-2 small weights + tokenizer (populated by scripts/prefetch.py).
+  path: assets/gpt2
+  hidden_size: 768
+  max_len: 128            # prefix + input, truncated to this many tokens
+  batch_size: 16          # forward-pass batch size (CPU)
+
+# Reproducibility: fixed BLAS / torch thread count.
+threads: 4
+
+# Layers of GPT-2 small to probe (0 = embeddings, 12 = final block). Selected on val.
+layers: [4, 8, 12]
+# Pooling strategies over the *input* tokens (prefix excluded from mean). Selected on val.
+poolings: [last, mean]
+
+# Data subsampling (fixed pool seed keeps the extracted feature pool stable across head seeds).
+data:
+  pool_seed: 0
+  train_pool: 4000        # balanced pool; head is subsampled from this per seed
+  val: 500
+  test: 1000
+
+# Head-training seeds: each varies the train-subset draw and head init.
+seeds: [0, 1, 2, 3, 4]
+
+# Learning-curve train sizes (drawn from the train_pool).
+train_sizes: [250, 500, 1000, 2000, 4000]
+
+# Conditions to run. C4 (soft prompt) requires backprop through the frozen model; off by default.
+conditions: [C0, C1, C2, C3]
+few_shot_k: 4             # C2: number of in-context demos (balanced across classes)
+
+tasks:
+  sst2:
+    type: binary
+    num_labels: 2
+    label_names: [negative, positive]
+  agnews:
+    type: multiclass
+    num_labels: 4
+    label_names: [World, Sports, Business, Sci/Tech]
+
+# Distillation (Phase 2): temperature and optimisation for the soft-label student head.
+distill:
+  temperature: 2.0
+  epochs: 300
+  lr: 0.05
+
+# Optional stretch condition C4 (learned soft prompt). Disabled by default (CPU budget).
+soft_prompt:
+  enabled: false
+  n_tokens: 10
+  epochs: 40
+  lr: 0.1

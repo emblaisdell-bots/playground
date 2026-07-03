@@ -1,0 +1,14 @@
+# Pinned to the versions this study was developed and run against.
+# CPU-only is sufficient. To avoid pulling large CUDA libraries, install torch from the CPU
+# wheel index where reachable:
+#     pip install torch==2.12.1 --index-url https://download.pytorch.org/whl/cpu
+# If that index is blocked (as in some sandboxes), plain `pip install torch==2.12.1` from PyPI
+# also works on CPU (it just ships unused CUDA libraries).
+torch==2.12.1
+transformers==4.44.2
+datasets==5.0.0
+scikit-learn==1.9.0
+numpy==2.4.6
+pandas==3.0.3
+matplotlib==3.11.0
+pyyaml==6.0.1
