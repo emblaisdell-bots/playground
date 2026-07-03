@@ -76,7 +76,11 @@ def plot_learning_curve(task):
             g.train_size, g["mean"], yerr=g["std"], marker="o", capsize=3,
             color=COND_COLOR[c], label=COND_LABEL[c],
         )
+    sizes = sorted(d.train_size.unique())
     ax1.set_xscale("log")
+    ax1.set_xticks(sizes)
+    ax1.set_xticklabels([str(s) for s in sizes])
+    ax1.minorticks_off()
     ax1.set_xlabel("head train size")
     ax1.set_ylabel("test accuracy")
     ax1.set_title(f"{task}: learning curves")
@@ -88,6 +92,9 @@ def plot_learning_curve(task):
     ax2.axhline(0, color="black", lw=0.8)
     ax2.plot(gap.train_size, gap.acc, marker="o", color=COND_COLOR["C1"])
     ax2.set_xscale("log")
+    ax2.set_xticks(sizes)
+    ax2.set_xticklabels([str(s) for s in sizes])
+    ax2.minorticks_off()
     ax2.set_xlabel("head train size")
     ax2.set_ylabel("C1 - C0 accuracy gap")
     ax2.set_title(f"{task}: priming gain vs data (H3)")

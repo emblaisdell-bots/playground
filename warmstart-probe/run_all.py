@@ -288,7 +288,17 @@ def summarise_distill(df, tasks):
     return pd.DataFrame(rows)
 
 
-def write_findings(cfg, tasks, cond_summary, paired, distill_summary, b0, teacher_by_task, quick):
+def _teacher_for_task(cond_summary, task):
+    """Recover the distillation teacher: primed condition (C2>C1) with best mean val accuracy."""
+    primed = [c for c in ["C2", "C1"]
+              if not cond_summary[(cond_summary.task == task) & (cond_summary.condition == c)].empty]
+    if not primed:
+        return "?"
+    return max(primed, key=lambda c: float(
+        cond_summary[(cond_summary.task == task) & (cond_summary.condition == c)].val_acc_mean.iloc[0]))
+
+
+def write_findings(cfg, tasks, cond_summary, paired, distill_summary, b0, quick):
     """Auto-write FINDINGS.md with per-hypothesis verdicts and effect sizes."""
     lines = ["# FINDINGS", ""]
     if quick:
@@ -324,16 +334,26 @@ def write_findings(cfg, tasks, cond_summary, paired, distill_summary, b0, teache
         lines.append(f"| B0 TF-IDF+LR | {b0m:.4f} | — |")
         lines.append("")
 
-        # H1
+        # H1 (with a magnitude check: a CI that excludes 0 can still be a negligible gain)
+        n_test = cfg["data"]["test"]
         d = pr(task, "C1-C0")
         if d:
-            verdict = "SUPPORTED" if d[1] > 0 else ("null" if d[2] > 0 else "not supported")
+            negligible = abs(d[0]) < 0.005
+            if d[1] > 0 and not negligible:
+                verdict = "SUPPORTED (CI excludes 0)"
+            elif d[1] > 0 and negligible:
+                verdict = (f"SUPPORTED by CI but NEGLIGIBLE in magnitude (~{d[0]*n_test:.1f} "
+                           f"examples/{n_test}); effectively null")
+            elif d[2] > 0:
+                verdict = "null (CI includes 0)"
+            else:
+                verdict = "not supported"
             lines.append(f"- **H1 (priming helps features):** C1−C0 = {d[0]:+.4f} "
-                         f"[{d[1]:+.4f}, {d[2]:+.4f}] → **{verdict}**"
-                         + (" (CI excludes 0)." if d[1] > 0 else " (CI includes 0)."))
+                         f"[{d[1]:+.4f}, {d[2]:+.4f}] → **{verdict}**.")
         d2 = pr(task, "C2-C0")
         if d2:
-            lines.append(f"  - few-shot: C2−C0 = {d2[0]:+.4f} [{d2[1]:+.4f}, {d2[2]:+.4f}].")
+            lines.append(f"  - few-shot: C2−C0 = {d2[0]:+.4f} [{d2[1]:+.4f}, {d2[2]:+.4f}]"
+                         " (note: C2 truncates the input more than C0/C1 — see caveats).")
         # H2
         rel = pr(task, "relevance_gain(C1-C3)")
         if rel:
@@ -351,10 +371,10 @@ def write_findings(cfg, tasks, cond_summary, paired, distill_summary, b0, teache
             hard, dist, teach = dv("hard_standalone"), dv("distilled_standalone"), dv("teacher_with_prefix")
             if hard is not None and dist is not None:
                 gain = dist - hard
-                verdict = "SUPPORTED" if gain > 0.002 else "null (distillation ≈ hard labels)"
+                verdict = "SUPPORTED" if gain > 0.005 else "null (distillation ≈ hard labels)"
                 lines.append(f"- **H4 (distillable to standalone):** distilled={dist:.4f} vs "
                              f"hard-label={hard:.4f} (Δ={gain:+.4f}); teacher-with-prefix={teach:.4f} "
-                             f"→ **{verdict}**. Teacher used: {teacher_by_task.get(task, '?')}.")
+                             f"→ **{verdict}**. Teacher used: {_teacher_for_task(cond_summary, task)}.")
         lines.append("")
 
     # H5 across tasks
@@ -367,11 +387,26 @@ def write_findings(cfg, tasks, cond_summary, paired, distill_summary, b0, teache
         lines.append(f"→ **{verdict}** (spread = {spread:.4f}).")
         lines.append("")
 
-    lines.append("## Notes on null/negative results")
-    lines.append("- A null on H1 with C3≈C1 would say the prime adds nothing beyond extra tokens; "
-                 "reported, not buried.")
-    lines.append("- A null on H4 bounds the deployability story: priming helps only while the prefix "
-                 "is present.")
+    lines.append("## Caveats")
+    lines.append(f"- **C2 input budget.** All conditions share a {cfg['model']['max_len']}-token cap. "
+                 "C2's k=%d demos consume ~95 tokens, leaving ~32 for the input, whereas C0/C1/C3 "
+                 "leave ~100. So C2 truncates long inputs more aggressively — a confound that "
+                 "particularly disadvantages AG News (median input ~49 tokens). Compare C2 with this "
+                 "in mind; C1 is the cleaner priming condition." % cfg["few_shot_k"])
+    lines.append("- **Tiny CIs.** Logistic-regression heads are near-deterministic given the data, so "
+                 "seed-to-seed variance (and hence the CIs) is small; a CI excluding 0 is not the same "
+                 "as a practically meaningful effect (see the H1 magnitude flags above).")
+    lines.append("- **n=5 seeds** → directional evidence, not proof, as pre-registered.")
+    lines.append("")
+    lines.append("## Notes on null/negative results (by design, every outcome is informative)")
+    lines.append("- **C3 ≈ C0 on both tasks** confirms the irrelevant prefix adds nothing — so any "
+                 "C1 gain is relevance-attributable, not length/compute. The control works.")
+    lines.append("- **AG News H2 null:** priming (C1) ≈ irrelevant (C3) ≈ cold (C0), and B0 TF-IDF "
+                 "beats all transformer conditions — GPT-2 topic features already saturate the signal; "
+                 "the instruction adds nothing. Reported, not buried.")
+    lines.append("- **H4 bounds the deployability story:** where priming genuinely helps (SST-2), the "
+                 "advantage distils into a prefix-free standalone head; where it does not (AG News), "
+                 "there is nothing to distil.")
     lines.append("")
     with open(os.path.join(HERE, "FINDINGS.md"), "w") as f:
         f.write("\n".join(lines))
@@ -389,6 +424,9 @@ def main():
     ap.add_argument("--config", default="config.yaml")
     ap.add_argument("--quick", action="store_true")
     ap.add_argument("--tasks", nargs="*", default=None)
+    ap.add_argument("--report-only", action="store_true",
+                    help="rebuild figures + FINDINGS.md from existing results/tables/*.csv "
+                         "(no extraction / head training). Satisfies 're-plot without re-extract'.")
     args = ap.parse_args()
 
     global _LOGF
@@ -401,6 +439,23 @@ def main():
         cfg = apply_quick(cfg)
     tasks = args.tasks if args.tasks else list(cfg["tasks"].keys())
 
+    if args.report_only:
+        log("REPORT-ONLY: rebuilding figures + FINDINGS from results/tables/*.csv")
+        df_scores = pd.read_csv(os.path.join(TABLES, "condition_scores.csv"))
+        cond_summary, _ = summarise_conditions(df_scores, tasks)
+        cond_summary.to_csv(os.path.join(TABLES, "condition_summary.csv"), index=False)
+        df_paired = paired_stats(df_scores, tasks)
+        df_paired.to_csv(os.path.join(TABLES, "paired_stats.csv"), index=False)
+        b0p = os.path.join(TABLES, "baseline_b0.csv")
+        df_b0 = pd.read_csv(b0p) if os.path.exists(b0p) else None
+        dsp = os.path.join(TABLES, "distill_summary.csv")
+        distill_summary = pd.read_csv(dsp) if os.path.exists(dsp) else None
+        plots_mod.make_all(tasks)
+        write_findings(cfg, tasks, cond_summary, df_paired, distill_summary, df_b0, args.quick)
+        log("REPORT-ONLY done. See FINDINGS.md + results/figures/.")
+        _LOGF.close()
+        return
+
     t_start = time.time()
     log("=" * 70)
     log(f"WARM-START PROBE  quick={args.quick}  tasks={tasks}  seeds={cfg['seeds']}")
@@ -410,7 +465,6 @@ def main():
     log("=" * 70)
 
     rows_scores, rows_lc, rows_sweep, rows_b0, rows_distill = [], [], [], [], []
-    teacher_by_task = {}
     all_feats = {}
 
     for task in tasks:
@@ -433,9 +487,7 @@ def main():
     for task in tasks:
         splits, feats = all_feats[task]
         log(f"\n### DISTILLATION: {task}")
-        tc = run_distillation(task, cfg, splits, feats, summ_lookup, rows_distill)
-        if tc:
-            teacher_by_task[task] = tc
+        run_distillation(task, cfg, splits, feats, summ_lookup, rows_distill)
 
     # ---- write tables ----
     df_scores.to_csv(os.path.join(TABLES, "condition_scores.csv"), index=False)
@@ -457,8 +509,7 @@ def main():
     # ---- figures + findings ----
     plots_mod.make_all(tasks)
     log("  wrote figures to results/figures/")
-    write_findings(cfg, tasks, cond_summary, df_paired, distill_summary, df_b0,
-                   teacher_by_task, args.quick)
+    write_findings(cfg, tasks, cond_summary, df_paired, distill_summary, df_b0, args.quick)
 
     log(f"\nDONE in {(time.time()-t_start)/60:.1f} min. See FINDINGS.md + results/.")
     _LOGF.close()

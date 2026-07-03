@@ -1,0 +1,11 @@
+task,seed,acc
+sst2,0,0.767
+sst2,1,0.767
+sst2,2,0.767
+sst2,3,0.767
+sst2,4,0.767
+agnews,0,0.859
+agnews,1,0.858
+agnews,2,0.862
+agnews,3,0.86
+agnews,4,0.861
