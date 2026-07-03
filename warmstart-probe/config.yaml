@@ -32,6 +32,10 @@ train_sizes: [250, 500, 1000, 2000, 4000]
 # Conditions to run. C4 (soft prompt) requires backprop through the frozen model; off by default.
 conditions: [C0, C1, C2, C3]
 few_shot_k: 4             # C2: number of in-context demos (balanced across classes)
+# C2: cap each demo's text so 4 demos + instruction + input fit under max_len. Without this,
+# full demos overflow the 128-token cap and squeeze the actual input to ~1 token (features
+# collapse to noise). ~14 leaves a real input budget within 128.
+few_shot_demo_max_tokens: 14
 
 tasks:
   sst2:

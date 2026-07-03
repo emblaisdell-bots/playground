@@ -24,6 +24,9 @@ DEMO_TEMPLATES = {
     "agnews": ("Article: {text}\nTopic: {label}\n\n"),
 }
 INPUT_LEADIN = {"sst2": "Review: ", "agnews": "Article: "}
+# Terse header for C2: the labelled demos already convey the task, so a short header (instead of
+# the full C1 instruction sentence) frees ~15 tokens of the 128 cap for the actual input.
+FEWSHOT_HEADER = {"sst2": "Sentiment classification.\n\n", "agnews": "Topic classification.\n\n"}
 
 # --- Irrelevant filler for the length-matched control (C3) -----------------------------------
 # Topic-neutral prose with no sentiment / news-topic signal; sliced to match C1's token length.
@@ -45,11 +48,20 @@ def _label_name(cfg, task, y):
     return cfg["tasks"][task]["label_names"][int(y)]
 
 
-def build_few_shot_demos(task, cfg, demo_texts, demo_labels):
-    """Assemble the fixed instruction + k labelled demos block used by C2 (a single string)."""
+def build_few_shot_demos(task, cfg, demo_texts, demo_labels, tokenizer=None):
+    """Assemble the fixed instruction + k labelled demos block used by C2 (a single string).
+
+    Demo *texts* are truncated to ``few_shot_demo_max_tokens`` so the whole C2 prefix leaves a
+    real budget for the actual input within the ``max_len`` cap. Without this, 4 full demos
+    overflow 128 tokens and the input is squeezed to ~1 token (features collapse to noise).
+    """
     tmpl = DEMO_TEMPLATES[task]
-    block = INSTRUCTIONS[task].split("\n\n")[0] + "\n\n"  # keep the instruction sentence only
+    cap = cfg.get("few_shot_demo_max_tokens")
+    block = FEWSHOT_HEADER[task]  # terse header; demos convey the task format
     for t, y in zip(demo_texts, demo_labels):
+        if cap and tokenizer is not None:
+            ids = tokenizer(t, add_special_tokens=False)["input_ids"][:cap]
+            t = tokenizer.decode(ids)
         block += tmpl.format(text=t, label=_label_name(cfg, task, y))
     block += INPUT_LEADIN[task]
     return block

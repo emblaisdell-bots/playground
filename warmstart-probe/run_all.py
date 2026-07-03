@@ -70,7 +70,7 @@ def build_condition_features(task, cfg, splits):
     _, tok = extract_mod.get_model_and_tokenizer(cfg)
     tr_texts, tr_labels = splits["train"]
     demo_texts, demo_labels, _ = pfx.pick_few_shot_demos(task, cfg, tr_texts, tr_labels)
-    few_shot_block = pfx.build_few_shot_demos(task, cfg, demo_texts, demo_labels)
+    few_shot_block = pfx.build_few_shot_demos(task, cfg, demo_texts, demo_labels, tokenizer=tok)
 
     feats = {}
     for cond in cfg["conditions"]:
