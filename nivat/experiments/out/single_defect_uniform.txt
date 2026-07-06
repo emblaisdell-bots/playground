@@ -1,0 +1,12 @@
+single-defect config (one 1 in a field of 0): primitive with P(m,n)=mn+1, uniformly in N
+elementary reason: patterns = {all-0} + {mn windows each covering the defect at a distinct offset} = mn+1;
+primitivity: any nonzero shift moves the unique defect, so no nonzero period.
+
+  Z_10xZ_10 P(2,2)=5 primitive=True (mn+1=5)
+  Z_20xZ_20 P(2,2)=5 primitive=True (mn+1=5)
+  Z_50xZ_50 P(2,2)=5 primitive=True (mn+1=5)
+  Z_100xZ_100 P(2,2)=5 primitive=True (mn+1=5)
+  Z_30xZ_40 P(2,2)=5 primitive=True (mn+1=5)
+  Z_15xZ_15 P(2,3)=7 primitive=True (mn+1=7)
+  Z_15xZ_15 P(3,3)=10 primitive=True (mn+1=10)
+  Z_20xZ_20 P(3,4)=13 primitive=True (mn+1=13)
