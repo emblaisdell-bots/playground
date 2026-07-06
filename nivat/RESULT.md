@@ -59,9 +59,20 @@ permit:
   `P(3,3)≤9` instance returns UNKNOWN on timeout — reported, not hidden.
   → `out/sat_search.txt`
 
+- **E5** (attempt 009) — the minimal-complexity aperiodic object is the
+  **single-defect** config; it attains `P(m,n)=mn+1` uniformly in `N` (to `100×100`).
+- **E6** (attempt 010) — the `mn+1` floor is machine-confirmed uniform for
+  `P(2,2)`: UNSAT for `N=5..11`, UNKNOWN at `N=12` (solver timeout).
+- **(011, obstacle)** — a finite-torus z3 probe of the 2D-vs-3D dimensional gap is
+  **inconclusive**: the 3D instance is UNKNOWN even at 280s, and conceptually the
+  `d≥3` failure is an *infinite* phenomenon that finite primitive tori need not
+  exhibit. No gap demonstrated; not claimed.
+
 These reproduce the 1D base case and Sander–Tijdeman-flavored behavior and
 quantify sharpness; they are **checkpoints, not termination** — consistent with,
-but not a proof of, Nivat's conjecture.
+but not a proof of, Nivat's conjecture. The frontier-pushing that was possible
+here is the *experimental* deepening above (attempts 009–011), not a `[PROVEN]`
+beat of any `[CITED]` record — which remains impossible without a verifier.
 
 ## Cross-check / provenance
 

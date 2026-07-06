@@ -1,0 +1,21 @@
+### 2D uniformity sweep: primitive with P(2,2) <= 4 (=mn) ?
+### (UNSAT at every size = strong evidence the mn+1 floor is uniform in N)
+  Z_9xZ_9    P(2,2)<=4 : UNSAT
+  Z_10xZ_10  P(2,2)<=4 : UNSAT
+  Z_11xZ_11  P(2,2)<=4 : UNSAT
+  Z_12xZ_12  P(2,2)<=4 : UNKNOWN   (z3 90s timeout, 144 cells; not a solution)
+  (N=14 attempted; z3 overran without a verdict -> treated as UNKNOWN)
+
+### Dimensional-gap probe (attempt 011): is 3D different on finite tori?
+### 2D:  primitive with P(2,2)   <= 4 (=mn)   ?
+  Z_5xZ_5      P(2,2)   <= 4 : UNSAT
+### 3D:  primitive with P(2,2,2) <= 8 (=mnk)  ?
+  Z_3xZ_3xZ_3  P(2,2,2) <= 8 : UNKNOWN   (z3 130s AND 280s; overran, no verdict)
+  Z_3xZ_4xZ_4  P(2,2,2) <= 8 : UNKNOWN   (z3 130s; overran, no verdict)
+
+### Honest reading: the finite z3 probe CANNOT decide the 3D question at reachable
+### sizes (a 3x3x3 torus has 26 nonzero period-vectors -> huge disjunctions, plus
+### 8-template matching over 27 cells). So NO finite dimensional gap is demonstrated
+### here. The genuine d>=3 failure of Nivat's analogue is a [CITED] fact about
+### INFINITE aperiodic configs; finite primitive tori need not exhibit it. See
+### attempts/011-dimensional-gap.md.

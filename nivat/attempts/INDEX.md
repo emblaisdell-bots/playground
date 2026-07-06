@@ -19,8 +19,8 @@ a march to 300.
 | 007 | C | `t=3` components | build sums of 3 periodics, measure | **obstacle** | universal algebraic statement; needs Nullstellensatz proof + Lean |
 | 008 | strengthen | H1: uniform `min P=mn+1` all sizes | z3 sweep over sizes | **partial support** | holds on all tested sizes; not a frontier record (a new strengthening, unproven) |
 | 009 | base/strengthen | structure of `P=mn+1` extremals | exhaustive enum `≤4×5` | **confirmed (checkpoint)** | single-defect config attains `mn+1` for ALL N (uniform achievability); extremals not unique. `experiments/extremal.py` |
-| 010 | strengthen | H1 uniformity at larger N | z3 sweep `P(2,2)≤4`, N=9..14 | see `attempts/010` | `experiments/sat_nd.py` |
-| 011 | context (planarity) | 2D vs 3D dimensional gap | z3: primitive `P(2,2,2)≤8`? | see `attempts/011` | why `d≥3` differs; `experiments/sat_nd.py` |
+| 010 | strengthen | H1 uniformity at larger N | z3 sweep `P(2,2)≤4`, N=9..14 | **partial support** | UNSAT to N=11, UNKNOWN at 12; `attempts/010`, `experiments/sat_nd.py` |
+| 011 | context (planarity) | 2D vs 3D dimensional gap on finite tori | z3: primitive `P(2,2,2)≤8`? | **obstacle / inconclusive** | 3D UNKNOWN even at 280s; gap may be infinite-only; `attempts/011` |
 
 **Why the list stops here.** The binding wall is environmental and was hit at
 setup: with no verifier, no (target, approach) on (A)/(B)/(C) can be carried to a

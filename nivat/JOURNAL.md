@@ -79,3 +79,16 @@
   — no toolchain to test them; versions may need the usual mathlib alignment).
 - Resume path documented in README §"Resuming with Lean". All work pushed, so a
   fresh session on this branch can install Lean and continue with a real verifier.
+
+### 2026-07-06 (later) — frontier-push: experimental deepening (attempts 009-011)
+
+Directive "push the research frontier". With no verifier, "frontier" here means
+the *experimental* frontier (no [PROVEN] beat is possible). Three attempts:
+- 009 extremal structure: single-defect config is the universal minimal aperiodic
+  object; attains mn+1 uniformly in N (to 100x100). [EXPERIMENTAL], checkpoint.
+- 010 uniform mn+1 floor (H1): achievability (single defect, all N) + z3 lower
+  bound UNSAT for N=5..11 (UNKNOWN at 12). Partial support; CONJECTURED, not used
+  as a lemma. checkpoint.
+- 011 dimensional gap on finite tori: z3 3D probe INCONCLUSIVE (UNKNOWN even at
+  280s); noted the gap is likely infinite-only, so finite tori may never show it.
+  obstacle. No record beaten; nothing PROVEN. All committed and pushed per attempt.

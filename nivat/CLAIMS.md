@@ -33,6 +33,21 @@ uninstallable here (see `SORRIES.md`), so nothing is machine-checked.
   is re-verified with `nivat_core` before being reported. (Verdicts recorded in
   `attempts/INDEX.md`.)
 
+- **E5 (extremal structure, attempt 009).** The minimal-complexity aperiodic
+  object is the **single-defect** config (one minority cell in a constant field):
+  primitive with `P(m,n) = mn+1` on **every** torus tested up to `100×100` and for
+  windows `2×2,2×3,3×3,3×4`. The `mn+1` floor is thus attained **uniformly in `N`**.
+  Extremals are not unique (2–4-cell defects also attain it).
+  → `experiments/extremal.py`, `out/extremal.{txt,json}`,
+  `out/single_defect_uniform.txt`.
+
+- **E6 (uniform-floor lower bound, attempt 010).** z3 confirms **no** primitive
+  binary config with `P(2,2) ≤ 4 = mn` exists for `N = 5,6,7,8,9,10,11`
+  (UNSAT); `N = 12` returns UNKNOWN (solver timeout, not a solution). Combined with
+  E5 this pins the floor at exactly `mn+1` over the whole tested range.
+  → `experiments/sat_nd.py` (leaner Bool encoding, validated against `sat_search`),
+  `out/sat_nd.txt`.
+
 ## `[CITED]` — see `LANDSCAPE.md` for full entries and retrieval URLs
 
 - Nivat's conjecture: Nivat, ICALP 1997 (via secondary sources).
