@@ -38,6 +38,12 @@ To enable the Lean path, an operator would need to allowlist `github.com` (and
 - **E3** caveat: full-wrap windows give a 1D-artifact `gap=0` (excluded from E2).
 - **E4** z3 certifies non-existence of low-complexity primitive configs past
   brute force. → `experiments/sat_search.py`, `out/sat_search.txt`
+- **E5** (attempt 009) the **single-defect** config is the universal minimal
+  aperiodic object: primitive with `P(m,n)=mn+1` uniformly in `N` (to 100×100).
+- **E6** (attempt 010) the `mn+1` floor is machine-confirmed uniform for `P(2,2)`:
+  UNSAT for `N=5..11` (UNKNOWN at 12). → `experiments/sat_nd.py`, `out/sat_nd.txt`
+- **(011, obstacle)** a finite z3 probe of the 2D-vs-3D gap is inconclusive (3D
+  UNKNOWN even at 280s; the gap is likely infinite-only). No gap claimed.
 
 ## Reproduce
 
