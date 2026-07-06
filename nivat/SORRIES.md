@@ -19,14 +19,14 @@ the axiom `Lean.ofReduceBool` (the `native_decide` axiom); no `sorryAx`. Evidenc
 
 ## Ledger
 
-### `lean/NivatFinite.lean` — COMPILED, 0 sorry
+### `lean/NivatFinite.lean` — COMPILED, 0 sorry (all proofs `native_decide`, axiom `ofReduceBool`)
 
-| decl | claim | proof | trusted base |
-|------|-------|-------|--------------|
-| `single_defect_3x3` | single-defect 3×3 config is primitive, `P(2,2)=5` | `native_decide` | `ofReduceBool` |
-| `floor_3x3` | ∀ primitive 3×3 config, `P(2,2) ≥ 5` (all 512) | `native_decide` | `ofReduceBool` |
-| `single_defect_4x4` | single-defect 4×4 config is primitive, `P(2,2)=5` | `native_decide` | `ofReduceBool` |
-| `floor_4x4` | ∀ primitive 4×4 config, `P(2,2) ≥ 5` (all 65536) | `native_decide` | `ofReduceBool` |
+| decl | claim |
+|------|-------|
+| `floor_3x3`, `floor_4x4` | ∀ primitive config on 3×3 / 4×4 torus, `P(2,2) ≥ 5` (512 / 65536) |
+| `floor_4x4_w23`, `floor_4x4_w33` | ∀ primitive 4×4 config, `P(2,3) ≥ 7`, `P(3,3) ≥ 10` |
+| `sharp_3x3_w22`, `sharp_4x4_w22/w23/w33` | single-defect config attains each floor (5,7,10) — sharp |
+| `mh_L6_n2`, `mh_L6_n3` | ∀ primitive length-6 necklace, `p(2) ≥ 3`, `p(3) ≥ 4` (all 64) |
 
 **`native_decide` caveat (disclosed, not hidden).** These proofs run a compiled
 decision procedure and trust the Lean compiler's Bool evaluation via

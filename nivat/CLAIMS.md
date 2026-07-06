@@ -10,13 +10,19 @@ the official hosts stay egress-blocked). `lean/NivatFinite.lean` compiles (exit 
 each proof depending only on `Lean.ofReduceBool` (the `native_decide` axiom — see
 the caveat in `SORRIES.md`). Evidence `lean/out/verify.log`, reproduce `lean/verify.sh`.
 
-- **P1** `floor_3x3` — every primitive configuration on the 3×3 binary torus has
-  `P(2,2) ≥ 5 = mn+1` (exhaustive over all 512). Machine-checked.
-- **P2** `floor_4x4` — same for the 4×4 binary torus (all 65536). Machine-checked.
-- **P3** `single_defect_3x3`, `single_defect_4x4` — the single-defect config is
-  primitive with `P(2,2)=5`, so the floor in P1/P2 is **attained** (sharp).
+2D sharp floor "primitive config ⇒ `P(wm,wn) ≥ wm·wn + 1`":
+- **P1** `floor_3x3`, `floor_4x4` — 2×2 window on the 3×3 / 4×4 binary tori:
+  `P(2,2) ≥ 5` (exhaustive over 512 / 65536).
+- **P2** `floor_4x4_w23`, `floor_4x4_w33` — larger windows on the 4×4 torus:
+  `P(2,3) ≥ 7` and `P(3,3) ≥ 10` (all 65536). [attempt 013]
+- **P3** `sharp_*` — the single-defect config attains each floor exactly
+  (`P=5,7,10`), so all the above floors are **sharp**.
 
-These upgrade experiment E2 for the 3×3/4×4 tori from `[EXPERIMENTAL]` to
+1D Morse–Hedlund sharp floor "primitive necklace ⇒ `p(n) ≥ n+1`":
+- **P4** `mh_L6_n2`, `mh_L6_n3` — length-6 binary necklaces: `p(2) ≥ 3`,
+  `p(3) ≥ 4` (all 64). [attempt 013] Upgrades E1 to `[PROVEN]` for L=6.
+
+These upgrade experiments E1/E2 (specific sizes/windows) from `[EXPERIMENTAL]` to
 `[PROVEN]`. **They beat no `[CITED]` record** (elementary finite instances), so
 they are checkpoints, not termination.
 

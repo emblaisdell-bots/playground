@@ -111,3 +111,15 @@ Honest status: E2 for 3×3/4×4 upgraded EXPERIMENTAL -> PROVEN. Beats NO cited
 record (elementary finite instances) -> checkpoint, NOT termination. A verifier
 makes finite facts provable, not the frontier reachable. Ledgers (SORRIES, CLAIMS,
 README, RESULT, FRONTIER, INDEX) updated accordingly.
+
+### 2026-07-06 (later) — broaden formal coverage (attempt 013)
+
+Generalized lean/NivatFinite.lean to arbitrary windows; added PROVEN
+(native_decide, axiom ofReduceBool, 0 sorry): 2D sharp floors P(2,3)>=7 and
+P(3,3)>=10 on the 4x4 torus (all 65536), their sharpness witnesses, and the 1D
+Morse-Hedlund floors p(2)>=3, p(3)>=4 for length-6 necklaces (upgrades E1 to
+PROVEN). Compiles exit 0 (~60s). Still elementary finite instances -> checkpoint,
+NOT termination; beats no cited record. Honest limit: native_decide settles only
+finite facts; the frontier targets (A k=5, B c>1/2, C t=3) are universal/infinite
+and need a mathematical idea I don't have. Further finite formalization would be
+padding.

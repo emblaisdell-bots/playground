@@ -1,39 +1,46 @@
 /-
-  NivatFinite.lean — MACHINE-CHECKED finite instances of the Nivat threshold.
+  NivatFinite.lean — MACHINE-CHECKED finite instances of the Nivat / Morse–Hedlund
+  sharp threshold.  Mathlib-free (Lean 4 core only):  `lean NivatFinite.lean`.
 
-  Mathlib-free (Lean 4 core only), so it compiles under a bare toolchain:
-      lean NivatFinite.lean      (exit 0 = all theorems checked)
+  Proved here (all by `native_decide`; trusted base = kernel + `Lean.ofReduceBool`,
+  disclosed in ../SORRIES.md; zero `sorry`):
 
-  What is proved here is NOT Nivat's conjecture and beats no research record.
-  It is the *finite* sharp-threshold fact from experiment E2 — "a primitive
-  (totally aperiodic at scale) configuration on a torus needs block complexity
-  P(2,2) >= 5 = mn+1, and 5 is attained" — verified exhaustively for the 3x3
-  and 4x4 binary tori. This upgrades those specific experimental findings to
-  genuine [PROVEN], and validates that our combinatorial encoding is correct.
+    2D, for the sharp floor  "primitive config ⇒ P(wm,wn) ≥ wm·wn + 1":
+      * 2×2 window on the 3×3 and 4×4 binary tori   (floor 5)
+      * 2×3 window on the 4×4 torus                 (floor 7)
+      * 3×3 window on the 4×4 torus                 (floor 10)
+      and that each floor is ATTAINED by the single-defect config (sharpness).
+    1D Morse–Hedlund sharp floor  "primitive necklace ⇒ p(n) ≥ n+1":
+      * length-6 binary necklaces, n = 2 and n = 3.
 
-  Configurations are indexed by a natural number k whose bit (N*i+j) is the
-  color of cell (i,j) on Z_N x Z_N; quantifying k over `Fin (2^(N*N))` keeps
-  everything decidable in core Lean (no Finset, no mathlib).
+  None of this is Nivat's conjecture and none beats a [CITED] record — these are
+  elementary finite instances that upgrade experiments E1/E2 to [PROVEN] and
+  validate the encoding.  A verifier makes finite facts provable; it does not make
+  the (infinite) frontier reachable.  See ../RESULT.md.
+
+  A config on the N×N binary torus is encoded by a Nat `k`: bit (N*i+j) = color of
+  cell (i,j).  Quantifying `k` over a range with a tail-recursive `List.all`
+  (not a `∀ k : Fin _` instance) keeps the decidability shallow enough to compile.
 -/
 
 namespace NivatFinite
 
-/-- color of cell (i,j) of the N x N binary torus encoded by `k`. -/
+/-! ## 2D torus -/
+
+/-- color of cell (i,j) of the N×N binary torus encoded by `k`. -/
 def cell (N k i j : Nat) : Nat := (k / 2 ^ (N * i + j)) % 2
 
-/-- the 2x2 window (with torus wrap) anchored at (i,j), as a 4-element list. -/
-def win22 (N k i j : Nat) : List Nat :=
-  [cell N k i j,
-   cell N k i ((j + 1) % N),
-   cell N k ((i + 1) % N) j,
-   cell N k ((i + 1) % N) ((j + 1) % N)]
+/-- the `wm × wn` window (torus wrap) anchored at (i,j), flattened to a list. -/
+def window (N k wm wn i j : Nat) : List Nat :=
+  (List.range wm).bind (fun di =>
+    (List.range wn).map (fun dj => cell N k ((i + di) % N) ((j + dj) % N)))
 
-/-- the list of all 2x2 windows occurring in the torus. -/
-def patterns22 (N k : Nat) : List (List Nat) :=
-  (List.range N).bind (fun i => (List.range N).map (fun j => win22 N k i j))
+/-- all `wm × wn` windows occurring in the torus. -/
+def patterns (N k wm wn : Nat) : List (List Nat) :=
+  (List.range N).bind (fun i => (List.range N).map (fun j => window N k wm wn i j))
 
-/-- block complexity P(2,2): number of DISTINCT 2x2 windows. -/
-def P22 (N k : Nat) : Nat := (patterns22 N k).eraseDups.length
+/-- block complexity `P(wm,wn)`: number of DISTINCT windows. -/
+def P (N k wm wn : Nat) : Nat := (patterns N k wm wn).eraseDups.length
 
 /-- `(a,b)` is a period of `k`: every cell equals its (a,b)-shift (mod N). -/
 def isPeriod (N k a b : Nat) : Bool :=
@@ -41,48 +48,75 @@ def isPeriod (N k a b : Nat) : Bool :=
     (List.range N).all (fun j =>
       cell N k i j == cell N k ((i + a) % N) ((j + b) % N)))
 
-/-- primitive: no NONZERO vector (a,b) in [0,N)x[0,N) is a period. -/
+/-- primitive: no NONZERO vector (a,b) in [0,N)×[0,N) is a period. -/
 def primitive (N k : Nat) : Bool :=
   (List.range N).all (fun a =>
     (List.range N).all (fun b =>
       (a == 0 && b == 0) || (! isPeriod N k a b)))
 
-/-! ### Proofs by `native_decide`.
+/-- exhaustive sharp-floor check over `k = 0 .. cnt-1` (tail-recursive):
+    "every primitive config has `P(wm,wn) ≥ fl`". -/
+def allPrimFloor (N wm wn cnt fl : Nat) : Bool :=
+  (List.range cnt).all (fun k => (! primitive N k) || Nat.ble fl (P N k wm wn))
 
-    `native_decide` compiles the decision procedure to native code and runs it;
-    it is a legitimate proof but it enlarges the trusted base to include the
-    Lean compiler and the compiled `cell/P22/primitive` (kernel `decide`
-    overflows on the `List.eraseDups` reduction here, so it is not usable).
-    Disclosed honestly; noted again in ../SORRIES.md and ../CLAIMS.md. -/
+/-! ### Sharp floor, 2×2 window. -/
 
-/-- Exhaustive floor check as a tail-recursive Bool over `k = 0 .. cnt-1`:
-    "every primitive config has `P(2,2) ≥ fl`".  Using `List.all` (iterative)
-    instead of a `∀ k : Fin cnt` instance avoids a depth-`cnt` decidability
-    recursion that overflows the stack for large `cnt`. -/
-def allPrimHaveFloor (N cnt fl : Nat) : Bool :=
-  (List.range cnt).all (fun k => (! primitive N k) || Nat.ble fl (P22 N k))
-
-/-! #### 3x3 torus (2^9 = 512 configurations). -/
-
-/-- The single-defect config (only cell (0,0) = 1) is primitive with P(2,2)=5. -/
-theorem single_defect_3x3 : primitive 3 1 = true ∧ P22 3 1 = 5 := by
+/-- 3×3 torus, readable quantified form (2^9 = 512 configs). -/
+theorem floor_3x3_readable :
+    ∀ k : Fin 512, primitive 3 k.val = true → 5 ≤ P 3 k.val 2 2 := by
   native_decide
 
-/-- **Sharp floor, 3x3**, in readable quantified form. Every primitive 3x3 binary
-    config has P(2,2) ≥ 5 = mn+1. Exhaustive over all 512 configs. -/
-theorem floor_3x3 : ∀ k : Fin 512, primitive 3 k.val = true → 5 ≤ P22 3 k.val := by
-  native_decide
+/-- 3×3 torus, Bool form. -/
+theorem floor_3x3 : allPrimFloor 3 2 2 512 5 = true := by native_decide
 
-/-! #### 4x4 torus (2^16 = 65536 configurations). -/
+/-- 4×4 torus (2^16 = 65536 configs). -/
+theorem floor_4x4 : allPrimFloor 4 2 2 65536 5 = true := by native_decide
 
-/-- The single-defect config on 4x4 is primitive with P(2,2)=5. -/
-theorem single_defect_4x4 : primitive 4 1 = true ∧ P22 4 1 = 5 := by
-  native_decide
+/-! ### Sharp floor, larger windows on the 4×4 torus (more of the E2 table). -/
 
-/-- **Sharp floor, 4x4.** `allPrimHaveFloor 4 65536 5 = true` says: for every one
-    of the 2^16 configs `k`, if `primitive 4 k` then `P22 4 k ≥ 5`. Same content
-    as `floor_3x3`, one torus size up. -/
-theorem floor_4x4 : allPrimHaveFloor 4 65536 5 = true := by
-  native_decide
+/-- 2×3 window: every primitive 4×4 config has P(2,3) ≥ 7 = 2·3+1. -/
+theorem floor_4x4_w23 : allPrimFloor 4 2 3 65536 7 = true := by native_decide
+
+/-- 3×3 window: every primitive 4×4 config has P(3,3) ≥ 10 = 3·3+1. -/
+theorem floor_4x4_w33 : allPrimFloor 4 3 3 65536 10 = true := by native_decide
+
+/-! ### The floors are ATTAINED (single-defect config), i.e. sharp. -/
+
+theorem sharp_3x3_w22 : primitive 3 1 = true ∧ P 3 1 2 2 = 5 := by native_decide
+theorem sharp_4x4_w22 : primitive 4 1 = true ∧ P 4 1 2 2 = 5 := by native_decide
+theorem sharp_4x4_w23 : primitive 4 1 = true ∧ P 4 1 2 3 = 7 := by native_decide
+theorem sharp_4x4_w33 : primitive 4 1 = true ∧ P 4 1 3 3 = 10 := by native_decide
+
+/-! ## 1D Morse–Hedlund (the base case Nivat generalizes).
+
+    A cyclic binary word of length L is encoded by `k` (bit i = letter i).
+    `primitive1d` = no nonzero rotation is a period (= least period is L). -/
+
+def bit (k p : Nat) : Nat := (k / 2 ^ p) % 2
+
+def factorsAt (L k n i : Nat) : List Nat :=
+  (List.range n).map (fun t => bit k ((i + t) % L))
+
+def factors (L k n : Nat) : List (List Nat) :=
+  (List.range L).map (fun i => factorsAt L k n i)
+
+/-- factor complexity `p(n)`: number of distinct length-`n` cyclic factors. -/
+def p1d (L k n : Nat) : Nat := (factors L k n).eraseDups.length
+
+def isRot (L k s : Nat) : Bool :=
+  (List.range L).all (fun i => bit k i == bit k ((i + s) % L))
+
+def primitive1d (L k : Nat) : Bool :=
+  (List.range L).all (fun s => (s == 0) || (! isRot L k s))
+
+/-- exhaustive Morse–Hedlund floor: "every primitive necklace has `p(n) ≥ fl`". -/
+def mhFloor (L cnt n fl : Nat) : Bool :=
+  (List.range cnt).all (fun k => (! primitive1d L k) || Nat.ble fl (p1d L k n))
+
+/-- Length-6 necklaces: every primitive one has p(2) ≥ 3 = 2+1. -/
+theorem mh_L6_n2 : mhFloor 6 64 2 3 = true := by native_decide
+
+/-- Length-6 necklaces: every primitive one has p(3) ≥ 4 = 3+1. -/
+theorem mh_L6_n3 : mhFloor 6 64 3 4 = true := by native_decide
 
 end NivatFinite

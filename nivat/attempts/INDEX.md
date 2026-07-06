@@ -24,6 +24,7 @@ where actually hit — an honest, un-padded list, not a march to 300.
 | 010 | strengthen | H1 uniformity at larger N | z3 sweep `P(2,2)≤4`, N=9..14 | **partial support** | UNSAT to N=11, UNKNOWN at 12; `attempts/010`, `experiments/sat_nd.py` |
 | 011 | context (planarity) | 2D vs 3D dimensional gap on finite tori | z3: primitive `P(2,2,2)≤8`? | **obstacle / inconclusive** | 3D UNKNOWN even at 280s; gap may be infinite-only; `attempts/011` |
 | 012 | base (formal) | machine-check E2 finite instances | pull Lean via Docker mirror; `native_decide` | **PROVEN (checkpoint)** | `floor_3x3`/`floor_4x4` etc., 0 sorry, axioms=`ofReduceBool`; beats NO record; `attempts/012`, `lean/NivatFinite.lean` |
+| 013 | base (formal) | broaden proven coverage: more windows + 1D | generic window; `native_decide` | **PROVEN (checkpoint)** | `floor_4x4_w23/w33` (P≥7,10), `mh_L6_*` (1D E1); still beats NO record; `attempts/013` |
 
 **Why the list stops here.** The binding wall is environmental and was hit at
 setup: with no verifier, no (target, approach) on (A)/(B)/(C) can be carried to a

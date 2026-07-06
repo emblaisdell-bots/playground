@@ -1,11 +1,27 @@
-# Lean verification log (Lean (version 4.10.0, x86_64-unknown-linux-gnu, commit c375e19f6b65, Release))
-# host: mathlib-free toolchain from leanprovercommunity/lean4 via mirror.gcr.io
+# Lean verification log — Lean (version 4.10.0, x86_64-unknown-linux-gnu, Release)
+# mathlib-free toolchain from leanprovercommunity/lean4 via mirror.gcr.io
+# reproduce with: source ../env.sh && bash ../verify.sh   (compile ~60s)
 
-$ lean NivatFinite.lean  (exit 0 = all theorems checked)
-exit=0
+$ lean NivatFinite.lean
+exit=0        # every theorem checked; zero sorry
 
-# axioms (trusted base) of each proof:
-'NivatFinite.single_defect_3x3' depends on axioms: [Lean.ofReduceBool]
+# PROVEN, 2D sharp floor "primitive config => P(wm,wn) >= wm*wn + 1":
+#   floor_3x3      2x2 window, 3x3 torus  (all 512)     P(2,2) >= 5
+#   floor_4x4      2x2 window, 4x4 torus  (all 65536)   P(2,2) >= 5
+#   floor_4x4_w23  2x3 window, 4x4 torus  (all 65536)   P(2,3) >= 7
+#   floor_4x4_w33  3x3 window, 4x4 torus  (all 65536)   P(3,3) >= 10
+# each floor ATTAINED by the single-defect config (sharp_3x3_w22, sharp_4x4_w22/w23/w33).
+#
+# PROVEN, 1D Morse-Hedlund sharp floor "primitive necklace => p(n) >= n+1":
+#   mh_L6_n2   length-6 necklaces (all 64)   p(2) >= 3
+#   mh_L6_n3   length-6 necklaces (all 64)   p(3) >= 4
+
+# axioms (trusted base) of representative proofs:
 'NivatFinite.floor_3x3' depends on axioms: [Lean.ofReduceBool]
-'NivatFinite.single_defect_4x4' depends on axioms: [Lean.ofReduceBool]
 'NivatFinite.floor_4x4' depends on axioms: [Lean.ofReduceBool]
+'NivatFinite.floor_4x4_w23' depends on axioms: [Lean.ofReduceBool]
+'NivatFinite.floor_4x4_w33' depends on axioms: [Lean.ofReduceBool]
+'NivatFinite.sharp_4x4_w33' depends on axioms: [Lean.ofReduceBool]
+'NivatFinite.mh_L6_n2' depends on axioms: [Lean.ofReduceBool]
+'NivatFinite.mh_L6_n3' depends on axioms: [Lean.ofReduceBool]
+# Lean.ofReduceBool is the native_decide axiom; no sorryAx present.
