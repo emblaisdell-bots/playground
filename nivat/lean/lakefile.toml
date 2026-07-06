@@ -1,0 +1,22 @@
+# Lake package for the Nivat formalization.
+#
+# UNTESTED in the current environment (Lean toolchain uninstallable — egress
+# policy blocks github releases + release.lean-lang.org). Provided so that, in an
+# environment where those hosts are allowlisted, `bash setup.sh` brings up a
+# working mathlib project in one step.
+#
+# NOTE on versions: `lean-toolchain` here pins v4.15.0; mathlib is required from
+# its matching release tag below. If the toolchain and the mathlib tag drift,
+# run `lake update` and align `lean-toolchain` to the value mathlib ships (the
+# usual mathlib bring-up dance). Adjust the tag to a recent one if needed.
+name = "NivatFormalization"
+defaultTargets = ["Nivat"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "v4.15.0"
+
+# The library root is Nivat.lean (module `Nivat`), which `import Mathlib`.
+[[lean_lib]]
+name = "Nivat"

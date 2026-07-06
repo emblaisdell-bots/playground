@@ -61,6 +61,24 @@ lean/          UNVERIFIED statement (no toolchain) — not machine-checked
 experiments/   Python + z3, with tests and saved outputs
 ```
 
+## Resuming with Lean (once the hosts are allowlisted)
+
+The operator opted to enable the Lean path. Network policy is fixed at
+environment-creation time, so the change takes effect in a **new
+environment/session**, not this running container (re-tested: still 403). To
+resume: allowlist `github.com`, `objects.githubusercontent.com`,
+`release.lean-lang.org` on the environment, start a fresh session on this branch,
+then:
+
+```bash
+cd nivat/lean && bash setup.sh     # installs elan+mathlib, builds Nivat.lean
+```
+
+`setup.sh`, `lakefile.toml`, and `lean-toolchain` are committed but **untested**
+here (no toolchain to test them). Once `lake build Nivat` succeeds, the three
+sanity lemmas in `Nivat.lean` can be discharged (removing their `sorry`s and the
+banner), and only then can any frontier attempt legitimately earn `[PROVEN]`.
+
 ## The honesty rules this project follows
 
 No hidden `sorry`; no lemma that would (if true) prove Nivat unless itself

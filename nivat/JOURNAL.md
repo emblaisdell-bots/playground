@@ -67,3 +67,15 @@
   environmental blocker (no verifier) and secondarily by the genuine difficulty of
   the frontier. Full write-up in `RESULT.md`. Real, reproducible experimental
   contributions recorded as `[EXPERIMENTAL]` (E1–E4).
+
+### 2026-07-06 (later) — operator chose to enable Lean
+
+- Operator selected "allowlist Lean hosts". Re-tested egress: still 403 for
+  `github.com` releases, `release.lean-lang.org` unreachable — the policy change
+  has not taken effect in this live container (network policy is set at
+  environment creation; it applies to a NEW session). Did not retry the denial.
+- Committed Lean bring-up scaffolding for a future allowlisted session:
+  `lean/setup.sh`, `lean/lakefile.toml`, `lean/lean-toolchain` (all UNTESTED here
+  — no toolchain to test them; versions may need the usual mathlib alignment).
+- Resume path documented in README §"Resuming with Lean". All work pushed, so a
+  fresh session on this branch can install Lean and continue with a real verifier.
