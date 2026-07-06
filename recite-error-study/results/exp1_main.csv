@@ -1,0 +1,61 @@
+model,stim,cat,prior,n_tokens,mem_greedy_acc,mem_mean_logp,fidelity,corrected,greedy_is_canonical,p_error,p_canonical,canonical_token,error_token
+distilgpt2,pi,digits,very_high,16,0.1818,-4.7943,0.9999,0,0,0.99535,6e-05,793,293
+distilgpt2,e,digits,high,16,0.1818,-4.7824,0.802,0,0,0.52467,0.12953,18,19
+distilgpt2,fib,sequence,high,26,0.5294,-1.9956,0.9999,0,0,0.99894,0.0001, 21, 22
+distilgpt2,sonnet18,poetry,very_high,20,0.2308,-4.4548,0.9872,0,0,0.94844,0.01228, summer, winter
+distilgpt2,sonnet18b,poetry,very_high,20,0.2308,-4.4548,1.0,0,0,0.99831,0.0, temper, delicate
+distilgpt2,hamlet,drama,very_high,13,0.4444,-2.4403,0.9997,0,0,0.99605,0.00032, question, answer
+distilgpt2,genesis,scripture,very_high,11,0.375,-3.1636,0.9945,0,0,0.83055,0.00457, heaven, heavens
+distilgpt2,twinkle,rhyme,very_high,16,0.1818,-4.3256,0.9998,0,0,0.99116,0.00022, star, moon
+distilgpt2,lords,prayer,high,13,0.0,-4.3426,0.9999,0,0,0.99657,0.00013, name, fame
+distilgpt2,alphabet,sequence,very_high,24,0.875,-0.9062,0.9999,0,0,0.99608,8e-05, g, z
+distilgpt2,gettysburg,speech,high,17,0.0833,-5.1959,0.9817,0,0,0.90448,0.01687, seven, eight
+distilgpt2,firstlines,prose,medium,14,0.5,-1.735,0.9993,0,0,0.99319,0.00066, worst, strang
+distilgpt2,rand_digits,control_digits,none,14,0.1,-5.9572,0.9959,0,0,0.91327,0.00378,57,59
+distilgpt2,nonsense,control_prose,none,12,0.25,-6.809,1.0,0,0,0.99657,0.0, brass, glass
+distilgpt2,nonsense2,control_prose,none,13,0.3333,-5.7489,1.0,0,0,0.98988,0.0, tin, oak
+gpt2,pi,digits,very_high,16,0.5455,-2.6084,0.9994,0,0,0.96852,0.00059,793,293
+gpt2,e,digits,high,16,0.0909,-4.2309,0.9434,0,0,0.76366,0.04584,18,19
+gpt2,fib,sequence,high,26,0.5294,-1.4787,0.9997,0,0,0.99491,0.0003, 21, 22
+gpt2,sonnet18,poetry,very_high,20,0.4615,-3.4852,0.8102,0,0,0.45266,0.10607, summer, winter
+gpt2,sonnet18b,poetry,very_high,20,0.4615,-3.4852,1.0,0,0,0.99534,0.0, temper, delicate
+gpt2,hamlet,drama,very_high,13,0.5556,-1.9884,0.9954,0,0,0.89496,0.0041, question, answer
+gpt2,genesis,scripture,very_high,11,0.625,-1.8341,0.9679,0,0,0.88238,0.02925, heaven, heavens
+gpt2,twinkle,rhyme,very_high,16,0.1818,-3.692,0.9966,0,0,0.90438,0.0031, star, moon
+gpt2,lords,prayer,high,13,0.7778,-1.5366,0.9962,0,0,0.89128,0.00342, name, fame
+gpt2,alphabet,sequence,very_high,24,0.9375,-0.6699,1.0,0,0,0.99796,3e-05, g, z
+gpt2,gettysburg,speech,high,17,0.0833,-4.2155,0.9328,0,0,0.68239,0.04919, seven, eight
+gpt2,firstlines,prose,medium,14,0.8,-1.2032,0.9983,0,0,0.97898,0.00163, worst, strang
+gpt2,rand_digits,control_digits,none,14,0.1,-6.1495,0.9966,0,0,0.93501,0.00317,57,59
+gpt2,nonsense,control_prose,none,12,0.25,-7.0536,0.9999,0,0,0.94468,0.0001, brass, glass
+gpt2,nonsense2,control_prose,none,13,0.3333,-5.726,1.0,0,0,0.89075,3e-05, tin, oak
+gpt2-medium,pi,digits,very_high,16,0.8182,-2.4557,0.738,0,0,0.23685,0.08411,793,293
+gpt2-medium,e,digits,high,16,0.4545,-3.1471,0.9872,0,0,0.91886,0.01187,18,19
+gpt2-medium,fib,sequence,high,26,0.8824,-0.5909,0.9983,0,0,0.95872,0.00164, 21, 22
+gpt2-medium,sonnet18,poetry,very_high,20,0.4615,-3.1687,0.7176,0,0,0.32595,0.12826, summer, winter
+gpt2-medium,sonnet18b,poetry,very_high,20,0.4615,-3.1687,1.0,0,0,0.96435,2e-05, temper, delicate
+gpt2-medium,hamlet,drama,very_high,13,0.8889,-0.991,0.9287,0,0,0.82299,0.06316, question, answer
+gpt2-medium,genesis,scripture,very_high,11,0.75,-1.0458,0.9272,0,0,0.51298,0.04026, heaven, heavens
+gpt2-medium,twinkle,rhyme,very_high,16,0.4545,-2.3626,0.9978,0,0,0.9749,0.00215, star, moon
+gpt2-medium,lords,prayer,high,13,0.8889,-0.469,0.1566,1,1,0.11009,0.59273, name, fame
+gpt2-medium,alphabet,sequence,very_high,24,0.9375,-0.8663,0.9998,0,0,0.98281,0.00024, g, z
+gpt2-medium,gettysburg,speech,high,17,0.1667,-3.4828,0.9844,0,0,0.8523,0.01355, seven, eight
+gpt2-medium,firstlines,prose,medium,14,0.8,-0.552,0.9998,0,0,0.93625,0.00023, worst, strang
+gpt2-medium,rand_digits,control_digits,none,14,0.1,-6.2797,0.9943,0,0,0.91105,0.00524,57,59
+gpt2-medium,nonsense,control_prose,none,12,0.25,-6.5845,1.0,0,0,0.93396,4e-05, brass, glass
+gpt2-medium,nonsense2,control_prose,none,13,0.1111,-5.4599,0.9999,0,0,0.90604,5e-05, tin, oak
+gpt2-large,pi,digits,very_high,16,0.8182,-1.5396,0.9823,0,0,0.86522,0.01562,793,293
+gpt2-large,e,digits,high,16,0.7273,-1.8238,0.9978,0,0,0.97159,0.0021,18,19
+gpt2-large,fib,sequence,high,26,0.8824,-0.2963,0.9931,0,0,0.96489,0.00672, 21, 22
+gpt2-large,sonnet18,poetry,very_high,20,0.3846,-2.781,0.6216,0,0,0.41436,0.25229, summer, winter
+gpt2-large,sonnet18b,poetry,very_high,20,0.3846,-2.781,1.0,0,0,0.99272,0.0, temper, delicate
+gpt2-large,hamlet,drama,very_high,13,0.8889,-0.5859,0.8835,0,0,0.82525,0.10884, question, answer
+gpt2-large,genesis,scripture,very_high,11,0.75,-0.8902,0.8595,0,0,0.79314,0.12967, heaven, heavens
+gpt2-large,twinkle,rhyme,very_high,16,0.6364,-2.0358,0.995,0,0,0.96384,0.00484, star, moon
+gpt2-large,lords,prayer,high,13,1.0,-0.2461,0.009,1,1,0.00699,0.77138, name, fame
+gpt2-large,alphabet,sequence,very_high,24,0.9375,-1.0295,0.9886,0,0,0.92912,0.01067, g, z
+gpt2-large,gettysburg,speech,high,17,0.5833,-1.5729,0.9992,0,0,0.99354,0.00084, seven, eight
+gpt2-large,firstlines,prose,medium,14,1.0,-0.3901,0.1855,1,1,0.14579,0.64015, worst, strang
+gpt2-large,rand_digits,control_digits,none,14,0.1,-5.7601,0.9944,0,0,0.88669,0.00499,57,59
+gpt2-large,nonsense,control_prose,none,12,0.25,-6.0361,0.9998,0,0,0.84256,0.00019, brass, glass
+gpt2-large,nonsense2,control_prose,none,13,0.2222,-4.9141,0.9999,0,0,0.7483,6e-05, tin, oak

@@ -1,0 +1,5 @@
+# model weights are large and re-downloadable via weights/fetch_weights.sh
+weights/*.bin
+weights/dir_*/
+__pycache__/
+*.pyc
