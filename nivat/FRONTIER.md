@@ -41,8 +41,10 @@
 
 ## Standing
 
-No line beaten (none beatable here). The genuine, reproducible output is the
-`[EXPERIMENTAL]` finite theory (E1–E4): the 1D and 2D thresholds are **sharp**,
-extremal configs are Sturmian-like, and z3 certifies non-existence of
-low-complexity primitive configs at each tested size. This is a checkpoint, not
-termination.
+No line beaten. A mathlib-free Lean verifier was obtained (via Docker mirror,
+`lean/pull_lean.sh`), so the finite sharp-threshold facts are now **`[PROVEN]`**
+(`lean/NivatFinite.lean`: `floor_3x3`, `floor_4x4`) — but these are elementary
+finite instances that beat **no** record. The frontier lines are universal/infinite
+implications a `native_decide` cannot settle; no new mathematical idea was found.
+Together with the `[EXPERIMENTAL]` theory (E1–E6: 1D/2D thresholds sharp, extremal
+configs, z3 non-existence), this is a checkpoint, not termination.

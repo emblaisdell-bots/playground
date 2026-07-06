@@ -3,28 +3,27 @@
 ## Verdict: honest non-result (no frontier line beaten)
 
 No `[PROVEN]` strict improvement over any `[CITED]` record on lines (A) window
-width, (B) complexity threshold, or (C) Kari–Szabados components was produced —
-and, in this environment, **none was producible**.
+width, (B) complexity threshold, or (C) Kari–Szabados components was produced.
 
-### Why (the binding constraint, hit at setup)
+### A verifier is now available — and used (but it doesn't reach the frontier)
 
-The prescribed method is "verifier-first": propose in prose, but count nothing as
-established until **Lean** checks it. In this session the Lean toolchain is
-**uninstallable** — the egress policy returns HTTP 403 (policy denial, not
-retryable) for both distribution routes:
+The official Lean hosts stay egress-blocked (`github.com`, `api.github.com`,
+`release.lean-lang.org` → 403), but a mathlib-free **Lean 4.10.0** toolchain was
+pulled via the Docker mirror `mirror.gcr.io` (`lean/pull_lean.sh`). With it, the
+*finite* sharp-threshold facts are genuinely `[PROVEN]` (`lean/NivatFinite.lean`,
+evidence `lean/out/verify.log`, reproduce `lean/verify.sh`):
 
-```
-403  github.com/leanprover/elan/releases/...      403  github.com/leanprover/lean4/releases
-403  release.lean-lang.org:443 (CONNECT)
-```
+- `floor_3x3`, `floor_4x4` — every primitive config on the 3×3 / 4×4 binary torus
+  has `P(2,2) ≥ 5 = mn+1` (exhaustive over 512 / 65536 configs);
+- `single_defect_3x3/4x4` — the bound is attained (sharp).
 
-With no compiler, the `[PROVEN]` tag cannot be earned (Honesty Contract), so the
-one intended stop condition — a machine-checked improvement — is out of reach by
-construction, independent of any mathematical progress. This is the safety-valve /
-honest-non-result branch of TERMINATION, and it was reached essentially at the
-start; the attempt list (`attempts/INDEX.md`) is **not** padded toward 300.
+Machine-checked, zero `sorry`; trusted base = kernel + `Lean.ofReduceBool` (the
+`native_decide` axiom, disclosed). **These beat no `[CITED]` record** — they are
+elementary finite instances. A verifier makes finite facts *provable*; it does not
+make the frontier reachable. So this is a `[PROVEN]` **checkpoint, not
+termination**. The attempt list (`attempts/INDEX.md`) is **not** padded toward 300.
 
-### The mathematical frontier is also genuinely out of reach here
+### The mathematical frontier is genuinely out of reach here
 
 Even with a compiler, the records on (A)/(B)/(C) were set by domain experts using
 expansive-subdynamics (Cyr–Kra) and algebraic/Nullstellensatz (Kari–Szabados)
@@ -68,11 +67,14 @@ permit:
   `d≥3` failure is an *infinite* phenomenon that finite primitive tori need not
   exhibit. No gap demonstrated; not claimed.
 
+- **P1–P3** (`[PROVEN]`, attempt 012) — E2 for the 3×3 and 4×4 tori is now
+  machine-checked in Lean (`floor_3x3`, `floor_4x4`, `single_defect_*`), no `sorry`.
+
 These reproduce the 1D base case and Sander–Tijdeman-flavored behavior and
 quantify sharpness; they are **checkpoints, not termination** — consistent with,
 but not a proof of, Nivat's conjecture. The frontier-pushing that was possible
-here is the *experimental* deepening above (attempts 009–011), not a `[PROVEN]`
-beat of any `[CITED]` record — which remains impossible without a verifier.
+here is the *experimental* deepening (attempts 009–011) plus *formal verification
+of the finite instances* (012), not a `[PROVEN]` beat of any `[CITED]` record.
 
 ## Cross-check / provenance
 
@@ -83,13 +85,18 @@ beat of any `[CITED]` record — which remains impossible without a verifier.
 - E4 output: `experiments/out/sat_search.txt`; every SAT witness re-verified
   with `nivat_core` inside `sat_search.py` (assertions), so no claim rests on z3
   alone.
-- Lean: `lean/Nivat.lean` is a STATEMENT only, **uncompiled**, banner-marked, and
-  ledgered in `SORRIES.md`. Nothing is machine-checked; nothing is `[PROVEN]`.
+- Lean (finite, `[PROVEN]`): `lean/NivatFinite.lean` compiles (exit 0), zero
+  `sorry`, axioms `[Lean.ofReduceBool]` only — `lean/out/verify.log`,
+  `lean/verify.sh`. Toolchain via `lean/pull_lean.sh`.
+- Lean (infinite): `lean/Nivat.lean` is a STATEMENT only, **uncompiled** (needs
+  mathlib, deliberately not pulled), ledgered in `SORRIES.md`. Not `[PROVEN]`.
 
 ## To actually pursue termination
 
-Allowlist `github.com`, `objects.githubusercontent.com`, and
-`release.lean-lang.org` for this environment so `elan`+`mathlib` can install; then
-the Lean statement in `lean/Nivat.lean` can be compiled, the sanity lemmas
-discharged, and genuine (if still very hard) proof attempts on (A)/(B)/(C) begun
-under a real verifier. Absent that, this is where an honest agent stops.
+The finite verifier is in hand; the remaining gap is mathematical, not
+infrastructural. Beating a `[CITED]` record on (A)/(B)/(C) requires the
+expansive-subdynamics or algebraic machinery — universal/infinite statements no
+finite `native_decide` can settle. Pulling **mathlib** (same Docker route) would
+let `lean/Nivat.lean` compile and its sanity lemmas be discharged, but that still
+leaves the frontier proofs to be found by hand. Absent a genuine new idea, this is
+where an honest agent stops.

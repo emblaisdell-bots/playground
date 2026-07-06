@@ -92,3 +92,22 @@ the *experimental* frontier (no [PROVEN] beat is possible). Three attempts:
 - 011 dimensional gap on finite tori: z3 3D probe INCONCLUSIVE (UNKNOWN even at
   280s); noted the gap is likely infinite-only, so finite tori may never show it.
   obstacle. No record beaten; nothing PROVEN. All committed and pushed per attempt.
+
+### 2026-07-06 (later) — got Lean anyway (Docker mirror), formal finite proofs (attempt 012)
+
+User: "try elsewhere to pull Lean; ok to skip mathlib". Mapped egress: official
+Lean hosts (github releases, api.github.com, release.lean-lang.org) blocked; Docker
+Hub API reachable but its cloudfront blob CDN blocked; **mirror.gcr.io reachable
+with GCS-backed blobs**. Pulled leanprovercommunity/lean4 via mirror.gcr.io,
+extracted lean+lake from image layers -> working Lean 4.10.0, mathlib-free
+(lean/pull_lean.sh, lean/env.sh).
+Wrote lean/NivatFinite.lean (core-only): encodes N×N binary torus as bits of a Nat,
+defines P22/isPeriod/primitive, proves by native_decide:
+  floor_3x3, floor_4x4 (∀ primitive config, P(2,2) >= 5 = mn+1; exhaustive over
+  512 / 65536), single_defect_3x3/4x4 (bound attained). Compiles exit 0, zero sorry,
+  axioms = [Lean.ofReduceBool] only (native_decide; disclosed). Evidence
+  lean/out/verify.log; reproduce lean/verify.sh.
+Honest status: E2 for 3×3/4×4 upgraded EXPERIMENTAL -> PROVEN. Beats NO cited
+record (elementary finite instances) -> checkpoint, NOT termination. A verifier
+makes finite facts provable, not the frontier reachable. Ledgers (SORRIES, CLAIMS,
+README, RESULT, FRONTIER, INDEX) updated accordingly.

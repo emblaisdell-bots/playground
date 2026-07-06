@@ -3,8 +3,25 @@
 Tags: `[PROVEN]` (Lean, 0 sorry) · `[CITED]` (retrieved source) ·
 `[EXPERIMENTAL]` (ran code + saved output) · `[CONJECTURED]`/`[HEURISTIC]` (ours).
 
-There are **zero `[PROVEN]`** claims in this project: the Lean toolchain is
-uninstallable here (see `SORRIES.md`), so nothing is machine-checked.
+## `[PROVEN]` — machine-checked in Lean 4.10.0 (mathlib-free), 0 sorry
+
+A Lean toolchain was obtained via the Docker mirror route (`lean/pull_lean.sh`;
+the official hosts stay egress-blocked). `lean/NivatFinite.lean` compiles (exit 0),
+each proof depending only on `Lean.ofReduceBool` (the `native_decide` axiom — see
+the caveat in `SORRIES.md`). Evidence `lean/out/verify.log`, reproduce `lean/verify.sh`.
+
+- **P1** `floor_3x3` — every primitive configuration on the 3×3 binary torus has
+  `P(2,2) ≥ 5 = mn+1` (exhaustive over all 512). Machine-checked.
+- **P2** `floor_4x4` — same for the 4×4 binary torus (all 65536). Machine-checked.
+- **P3** `single_defect_3x3`, `single_defect_4x4` — the single-defect config is
+  primitive with `P(2,2)=5`, so the floor in P1/P2 is **attained** (sharp).
+
+These upgrade experiment E2 for the 3×3/4×4 tori from `[EXPERIMENTAL]` to
+`[PROVEN]`. **They beat no `[CITED]` record** (elementary finite instances), so
+they are checkpoints, not termination.
+
+The infinite conjecture (`lean/Nivat.lean`) remains uncompiled (needs mathlib);
+nothing there is `[PROVEN]`.
 
 ## `[EXPERIMENTAL]` — verified by code in `experiments/`, outputs in `experiments/out/`
 

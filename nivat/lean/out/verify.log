@@ -1,0 +1,11 @@
+# Lean verification log (Lean (version 4.10.0, x86_64-unknown-linux-gnu, commit c375e19f6b65, Release))
+# host: mathlib-free toolchain from leanprovercommunity/lean4 via mirror.gcr.io
+
+$ lean NivatFinite.lean  (exit 0 = all theorems checked)
+exit=0
+
+# axioms (trusted base) of each proof:
+'NivatFinite.single_defect_3x3' depends on axioms: [Lean.ofReduceBool]
+'NivatFinite.floor_3x3' depends on axioms: [Lean.ofReduceBool]
+'NivatFinite.single_defect_4x4' depends on axioms: [Lean.ofReduceBool]
+'NivatFinite.floor_4x4' depends on axioms: [Lean.ofReduceBool]

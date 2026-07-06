@@ -14,3 +14,7 @@ __pycache__/
 
 # stray logs
 **/err.log
+
+# Lean toolchain pull (binaries; re-fetch via lean/pull_lean.sh) + build artifacts
+/.leanpull/
+lean/*.olean
