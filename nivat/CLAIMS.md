@@ -26,6 +26,25 @@ These upgrade experiments E1/E2 (specific sizes/windows) from `[EXPERIMENTAL]` t
 `[PROVEN]`. **They beat no `[CITED]` record** (elementary finite instances), so
 they are checkpoints, not termination.
 
+### `[PROVEN]` by genuine SYMBOLIC proof (not enumeration) — `lean/NivatTheory.lean`
+
+Unlike the `native_decide` theorems above (which check finite cases by brute
+force), this is a **general theorem proved by mathematical reasoning**, valid for
+all configurations and all period sizes, depending only on the kernel logic axioms
+`[propext, Quot.sound]` (no `native_decide`, no `sorry`), built from Lean core with
+no mathlib/Batteries.
+
+- **P5 `periodic_pair_PatternLE`** — *periodicity bounds complexity*: if a
+  configuration `x` has periods `(p,0)` and `(0,q)` with `p,q ≥ 1`, then
+  `P_x(m,n) ≤ p·q` for **every** window `(m,n)`. This is the provable converse
+  direction of the complexity–periodicity correspondence that Nivat's conjecture
+  is the hard side of. Supporting lemmas (also proved): `windowAt_add_period`,
+  `windowAt_nsmul`, `windowAt_zmul` (window invariant under integer multiples of a
+  period), `reduce_h`/`reduce_v`/`reduce_pair` (anchor reduces mod `(p,q)`).
+
+  **Not** Nivat and **not** a `[CITED]` record beat — it is the elementary/tractable
+  direction. But it is real symbolic mathematics, machine-checked. Checkpoint.
+
 The **infinite conjecture is now stated and COMPILED mathlib-free**
 (`lean/Nivat.lean`, attempt 014): `P_x(m,n) ≤ K` is encoded as a K-template
 covering (no `Set.ncard`), so no mathlib is needed. `NivatConjecture` is stated

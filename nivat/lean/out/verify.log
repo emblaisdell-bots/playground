@@ -8,6 +8,17 @@ exit=0        # compiles; sanity lemmas proven, zero sorry, NO axioms
   #print axioms const_PatternLE_one  -> does not depend on any axioms
   #print axioms not_PatternLE_zero   -> does not depend on any axioms
 
+$ lean NivatTheory.lean    # GENERAL theorem, SYMBOLIC proof (no enumeration)
+exit=0        # zero sorry
+# PROVEN by real reasoning (not native_decide): a config with periods (p,0),(0,q),
+# p,q>=1, has P_x(m,n) <= p*q for EVERY window (periodicity bounds complexity).
+#   windowAt_add_period / windowAt_nsmul / windowAt_zmul : window invariant under
+#     shifting the anchor by a period and by any integer multiple of it;
+#   reduce_h / reduce_v / reduce_pair : anchor reduces mod (p,q);
+#   periodic_pair_PatternLE : the p*q reduced anchors cover all windows.
+  #print axioms periodic_pair_PatternLE -> [propext, Quot.sound]   (kernel logic;
+                                        #  NO native_decide, NO sorry)
+
 $ lean NivatFinite.lean
 exit=0        # every theorem checked; zero sorry
 

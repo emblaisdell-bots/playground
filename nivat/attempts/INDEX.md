@@ -26,6 +26,7 @@ where actually hit — an honest, un-padded list, not a march to 300.
 | 012 | base (formal) | machine-check E2 finite instances | pull Lean via Docker mirror; `native_decide` | **PROVEN (checkpoint)** | `floor_3x3`/`floor_4x4` etc., 0 sorry, axioms=`ofReduceBool`; beats NO record; `attempts/012`, `lean/NivatFinite.lean` |
 | 013 | base (formal) | broaden proven coverage: more windows + 1D | generic window; `native_decide` | **PROVEN (checkpoint)** | `floor_4x4_w23/w33` (P≥7,10), `mh_L6_*` (1D E1); still beats NO record; `attempts/013` |
 | 014 | base (formal) | get mathlib → compile infinite statement | mathlib unobtainable; mathlib-free K-template encoding | **PROVEN (checkpoint)** | mathlib all-routes-blocked; `Nivat.lean` compiles mathlib-free, sanity lemmas 0 axioms/0 sorry; beats NO record; `attempts/014` |
+| 015 | converse (symbolic) | periodicity ⇒ complexity ≤ p·q, GENERAL | real proof: shift-invariance + ℤ-induction + mod reduction | **PROVEN, symbolic (checkpoint)** | `periodic_pair_PatternLE`, axioms `[propext,Quot.sound]` (NO native_decide), 0 sorry; not enumeration; beats NO record; `attempts/015`, `lean/NivatTheory.lean` |
 
 **Why the list stops here.** The binding wall is environmental and was hit at
 setup: with no verifier, no (target, approach) on (A)/(B)/(C) can be carried to a

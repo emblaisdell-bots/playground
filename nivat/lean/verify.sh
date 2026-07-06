@@ -11,22 +11,26 @@ echo ">> lean --version"; lean --version
 echo ">> checking Nivat.lean — mathlib-free infinite STATEMENT + sanity lemmas"
 lean Nivat.lean;            echo "   exit=$?"
 
-echo ">> checking NivatFinite.lean — finite PROVEN theorems (~60s)"
+echo ">> checking NivatTheory.lean — GENERAL theorem, SYMBOLIC proof (no enumeration)"
+lean NivatTheory.lean;      echo "   exit=$?"
+
+echo ">> checking NivatFinite.lean — finite PROVEN theorems via native_decide (~60s)"
 lean NivatFinite.lean;      echo "   exit=$?"
 
 echo ">> axioms (trusted base):"
 lean --o=/tmp/Nivat.olean Nivat.lean
+lean --o=/tmp/NivatTheory.olean NivatTheory.lean
 lean --o=/tmp/NivatFinite.olean NivatFinite.lean
 cat > /tmp/_ax.lean <<'EOF'
 import Nivat
+import NivatTheory
 import NivatFinite
-open Nivat NivatFinite
+open Nivat NivatTheory NivatFinite
 #print axioms const_periodic
-#print axioms not_PatternLE_zero
+#print axioms periodic_pair_PatternLE
 #print axioms floor_4x4
-#print axioms floor_4x4_w33
 #print axioms mh_L6_n2
 EOF
 LEAN_PATH=/tmp lean /tmp/_ax.lean
-echo ">> done. Nivat.lean lemmas: no axioms. Finite theorems: Lean.ofReduceBool"
-echo ">> (native_decide axiom); no sorryAx anywhere."
+echo ">> Nivat.lean: no axioms. NivatTheory (symbolic): [propext, Quot.sound] only"
+echo ">> (kernel logic — NO native_decide). Finite: Lean.ofReduceBool. No sorryAx."

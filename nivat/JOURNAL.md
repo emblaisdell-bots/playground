@@ -138,3 +138,17 @@ COMPILES under the extracted Lean 4.10.0: NivatConjecture stated (open); sanity
 lemmas const_periodic/const_PatternLE_one/not_PatternLE_zero proved with 0 axioms,
 0 sorry. So the infinite statement is now machine-checked without mathlib.
 Still a checkpoint (statement compiled, conjecture unproved, no record beaten).
+
+### 2026-07-06 (later) — actual symbolic mathematics (attempt 015)
+
+User: "try actual novel symbolic mathematics, not just trying examples."
+Proved a GENERAL theorem by real reasoning (not native_decide enumeration):
+lean/NivatTheory.lean, periodic_pair_PatternLE — a config with periods (p,0),(0,q),
+p,q>=1, has P_x(m,n) <= p*q for every window (periodicity bounds complexity; the
+provable converse of Nivat's direction). Built entirely from Lean core (no mathlib,
+no Batteries): windowAt_add_period -> windowAt_nsmul/windowAt_zmul (invariance under
+integer multiples of a period, induction via Int.rec) -> reduce_h/v/pair (anchor mod
+(p,q) via Int.ediv_add_emod) -> covering by the p*q reduced anchors. Axioms:
+[propext, Quot.sound] only (kernel logic; NO native_decide, NO sorry). Genuine
+symbolic math; still the tractable/converse direction, beats NO cited record ->
+checkpoint, not termination. verify.sh now checks all three Lean files.
