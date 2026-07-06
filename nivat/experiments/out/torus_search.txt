@@ -1,0 +1,91 @@
+================================================================
+Torus Z_3 x Z_3, alphabet size 2
+  configs total=512  primitive=486
+  window |  mn | minP(prim) | gap=minP-mn | meets mn?
+     1x1 |   1 |          2 |          +1 |
+     1x2 |   2 |          3 |          +1 |
+     1x3 |   3 |          3 |          +0 |  <-- MEETS/BEATS mn
+     2x1 |   2 |          3 |          +1 |
+     2x2 |   4 |          5 |          +1 |
+     2x3 |   6 |          7 |          +1 |
+     3x1 |   3 |          3 |          +0 |  <-- MEETS/BEATS mn
+     3x2 |   6 |          7 |          +1 |
+     3x3 |   9 |          9 |          +0 |  <-- MEETS/BEATS mn
+================================================================
+Torus Z_3 x Z_4, alphabet size 2
+  configs total=4096  primitive=4020
+  window |  mn | minP(prim) | gap=minP-mn | meets mn?
+     1x1 |   1 |          2 |          +1 |
+     1x2 |   2 |          3 |          +1 |
+     1x3 |   3 |          4 |          +1 |
+     1x4 |   4 |          4 |          +0 |  <-- MEETS/BEATS mn
+     2x1 |   2 |          3 |          +1 |
+     2x2 |   4 |          5 |          +1 |
+     2x3 |   6 |          7 |          +1 |
+     2x4 |   8 |          8 |          +0 |  <-- MEETS/BEATS mn
+     3x1 |   3 |          3 |          +0 |  <-- MEETS/BEATS mn
+     3x2 |   6 |          6 |          +0 |  <-- MEETS/BEATS mn
+     3x3 |   9 |          9 |          +0 |  <-- MEETS/BEATS mn
+     3x4 |  12 |         12 |          +0 |  <-- MEETS/BEATS mn
+================================================================
+Torus Z_4 x Z_4, alphabet size 2
+  configs total=65536  primitive=64800
+  window |  mn | minP(prim) | gap=minP-mn | meets mn?
+     1x1 |   1 |          2 |          +1 |
+     1x2 |   2 |          3 |          +1 |
+     1x3 |   3 |          4 |          +1 |
+     1x4 |   4 |          4 |          +0 |  <-- MEETS/BEATS mn
+     2x1 |   2 |          3 |          +1 |
+     2x2 |   4 |          5 |          +1 |
+     2x3 |   6 |          7 |          +1 |
+     2x4 |   8 |          8 |          +0 |  <-- MEETS/BEATS mn
+     3x1 |   3 |          4 |          +1 |
+     3x2 |   6 |          7 |          +1 |
+     3x3 |   9 |         10 |          +1 |
+     3x4 |  12 |         12 |          +0 |  <-- MEETS/BEATS mn
+     4x1 |   4 |          4 |          +0 |  <-- MEETS/BEATS mn
+     4x2 |   8 |          8 |          +0 |  <-- MEETS/BEATS mn
+     4x3 |  12 |         12 |          +0 |  <-- MEETS/BEATS mn
+     4x4 |  16 |         16 |          +0 |  <-- MEETS/BEATS mn
+================================================================
+Torus Z_3 x Z_5, alphabet size 2
+  configs total=32768  primitive=32730
+  window |  mn | minP(prim) | gap=minP-mn | meets mn?
+     1x1 |   1 |          2 |          +1 |
+     1x2 |   2 |          3 |          +1 |
+     1x3 |   3 |          4 |          +1 |
+     1x4 |   4 |          5 |          +1 |
+     1x5 |   5 |          5 |          +0 |  <-- MEETS/BEATS mn
+     2x1 |   2 |          3 |          +1 |
+     2x2 |   4 |          5 |          +1 |
+     2x3 |   6 |          7 |          +1 |
+     2x4 |   8 |          9 |          +1 |
+     2x5 |  10 |         10 |          +0 |  <-- MEETS/BEATS mn
+     3x1 |   3 |          3 |          +0 |  <-- MEETS/BEATS mn
+     3x2 |   6 |          6 |          +0 |  <-- MEETS/BEATS mn
+     3x3 |   9 |          9 |          +0 |  <-- MEETS/BEATS mn
+     3x4 |  12 |         12 |          +0 |  <-- MEETS/BEATS mn
+     3x5 |  15 |         15 |          +0 |  <-- MEETS/BEATS mn
+================================================================
+Torus Z_3 x Z_3, alphabet size 3
+  configs total=19683  primitive=19584
+  window |  mn | minP(prim) | gap=minP-mn | meets mn?
+     1x1 |   1 |          2 |          +1 |
+     1x2 |   2 |          3 |          +1 |
+     1x3 |   3 |          3 |          +0 |  <-- MEETS/BEATS mn
+     2x1 |   2 |          3 |          +1 |
+     2x2 |   4 |          5 |          +1 |
+     2x3 |   6 |          7 |          +1 |
+     3x1 |   3 |          3 |          +0 |  <-- MEETS/BEATS mn
+     3x2 |   6 |          7 |          +1 |
+     3x3 |   9 |          9 |          +0 |  <-- MEETS/BEATS mn
+================================================================
+Torus Z_2 x Z_2, alphabet size 4
+  configs total=256  primitive=216
+  window |  mn | minP(prim) | gap=minP-mn | meets mn?
+     1x1 |   1 |          2 |          +1 |
+     1x2 |   2 |          3 |          +1 |
+     2x1 |   2 |          3 |          +1 |
+     2x2 |   4 |          4 |          +0 |  <-- MEETS/BEATS mn
+
+saved -> out/torus_search.json

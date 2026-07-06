@@ -1,0 +1,41 @@
+Battery on the 2x2 window (z3-fast). mn=4.
+K=4 expect UNSAT (finite 'aperiodic=>P>mn'); K=5 expect SAT (sharp).
+  Z_5xZ_5 a=2  P(2,2)<=4 (mn=4) : UNSAT
+  Z_5xZ_5 a=2  P(2,2)<=5 (mn=4) : SAT
+     witness P(2,2)=5, primitive (re-verified):
+      00000
+      00001
+      00000
+      00000
+      00000
+  Z_6xZ_6 a=2  P(2,2)<=4 (mn=4) : UNSAT
+  Z_6xZ_6 a=2  P(2,2)<=5 (mn=4) : SAT
+     witness P(2,2)=5, primitive (re-verified):
+      000000
+      010000
+      000000
+      000000
+      000000
+      000000
+  Z_7xZ_7 a=2  P(2,2)<=4 (mn=4) : UNSAT
+  Z_7xZ_7 a=2  P(2,2)<=5 (mn=4) : SAT
+     witness P(2,2)=5, primitive (re-verified):
+      0000000
+      0000001
+      0010100
+      0000001
+      0010000
+      0000000
+      0010001
+  Z_8xZ_8 a=2  P(2,2)<=4 (mn=4) : UNSAT
+  Z_8xZ_8 a=2  P(2,2)<=5 (mn=4) : SAT
+     witness P(2,2)=5, primitive (re-verified):
+      11010111
+      11111110
+      10101011
+      11111110
+      10101011
+      11111110
+      11011111
+      01111101
+  Z_5xZ_5 a=2  P(3,3)<=9 (mn=9) : UNKNOWN

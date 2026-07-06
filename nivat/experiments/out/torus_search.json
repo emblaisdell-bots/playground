@@ -1,0 +1,1923 @@
+[
+ {
+  "N": 3,
+  "M": 3,
+  "a": 2,
+  "n_total": 512,
+  "n_primitive": 486,
+  "windows": {
+   "1x1": {
+    "m": 1,
+    "n": 1,
+    "mn": 1,
+    "min_P_over_primitive": 2,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "1x2": {
+    "m": 1,
+    "n": 2,
+    "mn": 2,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "1x3": {
+    "m": 1,
+    "n": 3,
+    "mn": 3,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      0
+     ]
+    ]
+   },
+   "2x1": {
+    "m": 2,
+    "n": 1,
+    "mn": 2,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "2x2": {
+    "m": 2,
+    "n": 2,
+    "mn": 4,
+    "min_P_over_primitive": 5,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "2x3": {
+    "m": 2,
+    "n": 3,
+    "mn": 6,
+    "min_P_over_primitive": 7,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "3x1": {
+    "m": 3,
+    "n": 1,
+    "mn": 3,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      1,
+      1,
+      0
+     ]
+    ]
+   },
+   "3x2": {
+    "m": 3,
+    "n": 2,
+    "mn": 6,
+    "min_P_over_primitive": 7,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "3x3": {
+    "m": 3,
+    "n": 3,
+    "mn": 9,
+    "min_P_over_primitive": 9,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ]
+    ]
+   }
+  }
+ },
+ {
+  "N": 3,
+  "M": 4,
+  "a": 2,
+  "n_total": 4096,
+  "n_primitive": 4020,
+  "windows": {
+   "1x1": {
+    "m": 1,
+    "n": 1,
+    "mn": 1,
+    "min_P_over_primitive": 2,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "1x2": {
+    "m": 1,
+    "n": 2,
+    "mn": 2,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "1x3": {
+    "m": 1,
+    "n": 3,
+    "mn": 3,
+    "min_P_over_primitive": 4,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "1x4": {
+    "m": 1,
+    "n": 4,
+    "mn": 4,
+    "min_P_over_primitive": 4,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      1,
+      0
+     ]
+    ]
+   },
+   "2x1": {
+    "m": 2,
+    "n": 1,
+    "mn": 2,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "2x2": {
+    "m": 2,
+    "n": 2,
+    "mn": 4,
+    "min_P_over_primitive": 5,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "2x3": {
+    "m": 2,
+    "n": 3,
+    "mn": 6,
+    "min_P_over_primitive": 7,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "2x4": {
+    "m": 2,
+    "n": 4,
+    "mn": 8,
+    "min_P_over_primitive": 8,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      0,
+      0
+     ]
+    ]
+   },
+   "3x1": {
+    "m": 3,
+    "n": 1,
+    "mn": 3,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      1,
+      1,
+      1,
+      0
+     ]
+    ]
+   },
+   "3x2": {
+    "m": 3,
+    "n": 2,
+    "mn": 6,
+    "min_P_over_primitive": 6,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      0,
+      0
+     ]
+    ]
+   },
+   "3x3": {
+    "m": 3,
+    "n": 3,
+    "mn": 9,
+    "min_P_over_primitive": 9,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      0,
+      0
+     ]
+    ]
+   },
+   "3x4": {
+    "m": 3,
+    "n": 4,
+    "mn": 12,
+    "min_P_over_primitive": 12,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   }
+  }
+ },
+ {
+  "N": 4,
+  "M": 4,
+  "a": 2,
+  "n_total": 65536,
+  "n_primitive": 64800,
+  "windows": {
+   "1x1": {
+    "m": 1,
+    "n": 1,
+    "mn": 1,
+    "min_P_over_primitive": 2,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "1x2": {
+    "m": 1,
+    "n": 2,
+    "mn": 2,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "1x3": {
+    "m": 1,
+    "n": 3,
+    "mn": 3,
+    "min_P_over_primitive": 4,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "1x4": {
+    "m": 1,
+    "n": 4,
+    "mn": 4,
+    "min_P_over_primitive": 4,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      1,
+      0
+     ]
+    ]
+   },
+   "2x1": {
+    "m": 2,
+    "n": 1,
+    "mn": 2,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "2x2": {
+    "m": 2,
+    "n": 2,
+    "mn": 4,
+    "min_P_over_primitive": 5,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "2x3": {
+    "m": 2,
+    "n": 3,
+    "mn": 6,
+    "min_P_over_primitive": 7,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "2x4": {
+    "m": 2,
+    "n": 4,
+    "mn": 8,
+    "min_P_over_primitive": 8,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1,
+      0
+     ]
+    ]
+   },
+   "3x1": {
+    "m": 3,
+    "n": 1,
+    "mn": 3,
+    "min_P_over_primitive": 4,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "3x2": {
+    "m": 3,
+    "n": 2,
+    "mn": 6,
+    "min_P_over_primitive": 7,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "3x3": {
+    "m": 3,
+    "n": 3,
+    "mn": 9,
+    "min_P_over_primitive": 10,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "3x4": {
+    "m": 3,
+    "n": 4,
+    "mn": 12,
+    "min_P_over_primitive": 12,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1,
+      0
+     ]
+    ]
+   },
+   "4x1": {
+    "m": 4,
+    "n": 1,
+    "mn": 4,
+    "min_P_over_primitive": 4,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      1,
+      1,
+      1,
+      0
+     ]
+    ]
+   },
+   "4x2": {
+    "m": 4,
+    "n": 2,
+    "mn": 8,
+    "min_P_over_primitive": 8,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      0,
+      0
+     ]
+    ]
+   },
+   "4x3": {
+    "m": 4,
+    "n": 3,
+    "mn": 12,
+    "min_P_over_primitive": 12,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      0,
+      0
+     ]
+    ]
+   },
+   "4x4": {
+    "m": 4,
+    "n": 4,
+    "mn": 16,
+    "min_P_over_primitive": 16,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   }
+  }
+ },
+ {
+  "N": 3,
+  "M": 5,
+  "a": 2,
+  "n_total": 32768,
+  "n_primitive": 32730,
+  "windows": {
+   "1x1": {
+    "m": 1,
+    "n": 1,
+    "mn": 1,
+    "min_P_over_primitive": 2,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "1x2": {
+    "m": 1,
+    "n": 2,
+    "mn": 2,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "1x3": {
+    "m": 1,
+    "n": 3,
+    "mn": 3,
+    "min_P_over_primitive": 4,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "1x4": {
+    "m": 1,
+    "n": 4,
+    "mn": 4,
+    "min_P_over_primitive": 5,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "1x5": {
+    "m": 1,
+    "n": 5,
+    "mn": 5,
+    "min_P_over_primitive": 5,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      1,
+      0
+     ]
+    ]
+   },
+   "2x1": {
+    "m": 2,
+    "n": 1,
+    "mn": 2,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "2x2": {
+    "m": 2,
+    "n": 2,
+    "mn": 4,
+    "min_P_over_primitive": 5,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "2x3": {
+    "m": 2,
+    "n": 3,
+    "mn": 6,
+    "min_P_over_primitive": 7,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "2x4": {
+    "m": 2,
+    "n": 4,
+    "mn": 8,
+    "min_P_over_primitive": 9,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "2x5": {
+    "m": 2,
+    "n": 5,
+    "mn": 10,
+    "min_P_over_primitive": 10,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      1,
+      0
+     ],
+     [
+      0,
+      0,
+      1,
+      0,
+      0
+     ]
+    ]
+   },
+   "3x1": {
+    "m": 3,
+    "n": 1,
+    "mn": 3,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      1,
+      1,
+      1,
+      1,
+      0
+     ]
+    ]
+   },
+   "3x2": {
+    "m": 3,
+    "n": 2,
+    "mn": 6,
+    "min_P_over_primitive": 6,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      1,
+      0
+     ],
+     [
+      1,
+      1,
+      1,
+      0,
+      0
+     ]
+    ]
+   },
+   "3x3": {
+    "m": 3,
+    "n": 3,
+    "mn": 9,
+    "min_P_over_primitive": 9,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      1,
+      1,
+      0
+     ],
+     [
+      1,
+      1,
+      0,
+      0,
+      0
+     ]
+    ]
+   },
+   "3x4": {
+    "m": 3,
+    "n": 4,
+    "mn": 12,
+    "min_P_over_primitive": 12,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      1,
+      1,
+      0
+     ],
+     [
+      1,
+      1,
+      0,
+      0,
+      0
+     ]
+    ]
+   },
+   "3x5": {
+    "m": 3,
+    "n": 5,
+    "mn": 15,
+    "min_P_over_primitive": 15,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   }
+  }
+ },
+ {
+  "N": 3,
+  "M": 3,
+  "a": 3,
+  "n_total": 19683,
+  "n_primitive": 19584,
+  "windows": {
+   "1x1": {
+    "m": 1,
+    "n": 1,
+    "mn": 1,
+    "min_P_over_primitive": 2,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "1x2": {
+    "m": 1,
+    "n": 2,
+    "mn": 2,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "1x3": {
+    "m": 1,
+    "n": 3,
+    "mn": 3,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      0
+     ]
+    ]
+   },
+   "2x1": {
+    "m": 2,
+    "n": 1,
+    "mn": 2,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "2x2": {
+    "m": 2,
+    "n": 2,
+    "mn": 4,
+    "min_P_over_primitive": 5,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "2x3": {
+    "m": 2,
+    "n": 3,
+    "mn": 6,
+    "min_P_over_primitive": 7,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "3x1": {
+    "m": 3,
+    "n": 1,
+    "mn": 3,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      1,
+      1,
+      0
+     ]
+    ]
+   },
+   "3x2": {
+    "m": 3,
+    "n": 2,
+    "mn": 6,
+    "min_P_over_primitive": 7,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ]
+    ]
+   },
+   "3x3": {
+    "m": 3,
+    "n": 3,
+    "mn": 9,
+    "min_P_over_primitive": 9,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ]
+    ]
+   }
+  }
+ },
+ {
+  "N": 2,
+  "M": 2,
+  "a": 4,
+  "n_total": 256,
+  "n_primitive": 216,
+  "windows": {
+   "1x1": {
+    "m": 1,
+    "n": 1,
+    "mn": 1,
+    "min_P_over_primitive": 2,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   },
+   "1x2": {
+    "m": 1,
+    "n": 2,
+    "mn": 2,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   },
+   "2x1": {
+    "m": 2,
+    "n": 1,
+    "mn": 2,
+    "min_P_over_primitive": 3,
+    "gap_min_P_minus_mn": 1,
+    "meets_or_beats_mn_bound": false,
+    "witness": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   },
+   "2x2": {
+    "m": 2,
+    "n": 2,
+    "mn": 4,
+    "min_P_over_primitive": 4,
+    "gap_min_P_minus_mn": 0,
+    "meets_or_beats_mn_bound": true,
+    "witness": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  }
+ }
+]

@@ -1,0 +1,16 @@
+# Lean / lake build artifacts
+lean/.lake/
+lean/build/
+lean/lake-packages/
+**/*.olean
+**/*.ilean
+**/*.trace
+# Large search outputs
+experiments/out/*.jsonl
+experiments/out/*.large.*
+__pycache__/
+*.pyc
+.env
+
+# stray logs
+**/err.log
