@@ -84,9 +84,16 @@ source nivat/lean/env.sh            # put lean/lake on PATH
 bash nivat/lean/verify.sh           # check NivatFinite.lean + print the trusted base
 ```
 
-`NivatFinite.lean` is the machine-checked, mathlib-free file (finite theorems).
-`setup.sh`/`lakefile.toml`/`lean-toolchain` remain for a *mathlib* project (still
-untested — mathlib was not pulled); the infinite `Nivat.lean` needs that route.
+- `Nivat.lean` — the **infinite** conjecture, stated **mathlib-free** (complexity
+  bound `P ≤ K` encoded as a K-template covering) and COMPILED; sanity lemmas
+  proved with 0 axioms / 0 `sorry`.
+- `NivatFinite.lean` — the **finite** machine-checked theorems (sharp floors).
+
+mathlib could not be obtained here (olean cache, source mirrors, and prebuilt
+Docker images all egress-blocked — see `attempts/014`), which is why the infinite
+statement is written mathlib-free rather than with `Set.ncard`.
+`setup.sh`/`lakefile.toml`/`lean-toolchain` are kept only for an environment where
+mathlib *is* reachable (not this one).
 
 ## The honesty rules this project follows
 

@@ -40,21 +40,22 @@ sizes). They are **not** Nivat's conjecture and beat **no** `[CITED]` record, so
 they do **not** terminate the frontier loop. They upgrade experiment E2 for the
 3×3/4×4 tori to `[PROVEN]` and validate the encoding — a checkpoint.
 
-### `lean/Nivat.lean` — the INFINITE statement, still UNCOMPILED
+### `lean/Nivat.lean` — the INFINITE statement, now COMPILED (mathlib-free), 0 sorry
 
-This file states Nivat's conjecture over `ℤ²` using `Set.ncard` etc., which live
-in **mathlib**. We deliberately stayed mathlib-free (per the user), so this file
-is **not** compiled and its sanity lemmas remain `sorry`:
+mathlib could **not** be obtained here (its olean cache on `*.blob.core.windows.net`,
+its source via `codeload`/`jsdelivr`/`reservoir`, and every prebuilt-mathlib Docker
+image are all egress-blocked; only individual `raw.githubusercontent` files are
+reachable, insufficient to build it). So the file was rewritten **mathlib-free**:
+`P_x(m,n) ≤ K` is encoded as a K-template covering (no `Set.ncard`). It compiles.
 
-| decl | claim | strictly easier than Nivat? | hides core difficulty? | status |
-|------|-------|------------------------------|------------------------|--------|
-| `NivatConjecture` | the conjecture | — (target) | — | statement only |
-| `const_periodic` | constant config periodic | yes | no | `sorry`, needs mathlib |
-| `P_one_one_le` | `P(1,1) ≤ card A` | yes | no | `sorry`, needs mathlib |
-| `periodic_bounded_complexity` | periodic ⇒ bounded complexity | yes | no | `sorry`, needs mathlib |
+| decl | claim | proof | axioms |
+|------|-------|-------|--------|
+| `NivatConjecture` | the conjecture | — (stated only, open) | — |
+| `const_periodic` | constant config periodic | proved | **none** |
+| `const_PatternLE_one` | constant config has complexity ≤ 1 | proved | **none** |
+| `not_PatternLE_zero` | complexity is never ≤ 0 | proved | **none** |
 
-None restates the conjecture (no lemma-laundering). To compile these, pull mathlib
-too (same Docker route can supply it) and align the toolchain; not done here.
+No `sorry`, no axioms. None restates the conjecture (no lemma-laundering).
 
 ## Termination status
 

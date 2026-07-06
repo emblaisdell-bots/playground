@@ -88,8 +88,9 @@ of the finite instances* (012), not a `[PROVEN]` beat of any `[CITED]` record.
 - Lean (finite, `[PROVEN]`): `lean/NivatFinite.lean` compiles (exit 0), zero
   `sorry`, axioms `[Lean.ofReduceBool]` only — `lean/out/verify.log`,
   `lean/verify.sh`. Toolchain via `lean/pull_lean.sh`.
-- Lean (infinite): `lean/Nivat.lean` is a STATEMENT only, **uncompiled** (needs
-  mathlib, deliberately not pulled), ledgered in `SORRIES.md`. Not `[PROVEN]`.
+- Lean (infinite): `lean/Nivat.lean` now **compiles mathlib-free** (K-template
+  encoding of `P ≤ K`); `NivatConjecture` stated (open), sanity lemmas proved with
+  0 axioms / 0 `sorry`. mathlib itself was unobtainable (attempt 014).
 
 ## To actually pursue termination
 

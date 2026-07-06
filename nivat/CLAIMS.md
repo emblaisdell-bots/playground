@@ -26,8 +26,13 @@ These upgrade experiments E1/E2 (specific sizes/windows) from `[EXPERIMENTAL]` t
 `[PROVEN]`. **They beat no `[CITED]` record** (elementary finite instances), so
 they are checkpoints, not termination.
 
-The infinite conjecture (`lean/Nivat.lean`) remains uncompiled (needs mathlib);
-nothing there is `[PROVEN]`.
+The **infinite conjecture is now stated and COMPILED mathlib-free**
+(`lean/Nivat.lean`, attempt 014): `P_x(m,n) ≤ K` is encoded as a K-template
+covering (no `Set.ncard`), so no mathlib is needed. `NivatConjecture` is stated
+(open, not asserted); the sanity lemmas `const_periodic`, `const_PatternLE_one`,
+`not_PatternLE_zero` are **proved with zero axioms, zero `sorry`**. mathlib itself
+could not be obtained (all routes egress-blocked — see `SORRIES.md`), so this is
+the mathlib-free equivalent, not a mathlib build.
 
 ## `[EXPERIMENTAL]` — verified by code in `experiments/`, outputs in `experiments/out/`
 

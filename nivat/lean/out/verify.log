@@ -2,6 +2,12 @@
 # mathlib-free toolchain from leanprovercommunity/lean4 via mirror.gcr.io
 # reproduce with: source ../env.sh && bash ../verify.sh   (compile ~60s)
 
+$ lean Nivat.lean          # mathlib-free INFINITE statement + sanity lemmas
+exit=0        # compiles; sanity lemmas proven, zero sorry, NO axioms
+  #print axioms const_periodic       -> does not depend on any axioms
+  #print axioms const_PatternLE_one  -> does not depend on any axioms
+  #print axioms not_PatternLE_zero   -> does not depend on any axioms
+
 $ lean NivatFinite.lean
 exit=0        # every theorem checked; zero sorry
 

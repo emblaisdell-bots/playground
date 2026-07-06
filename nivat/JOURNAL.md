@@ -123,3 +123,18 @@ NOT termination; beats no cited record. Honest limit: native_decide settles only
 finite facts; the frontier targets (A k=5, B c>1/2, C t=3) are universal/infinite
 and need a mathematical idea I don't have. Further finite formalization would be
 padding.
+
+### 2026-07-06 (later) — mathlib unobtainable; infinite statement compiled mathlib-free (attempt 014)
+
+User: "try to get mathlib." Probed every route: olean cache
+(*.blob.core.windows.net) 000; source via codeload 403, jsdelivr/reservoir 000;
+prebuilt-mathlib Docker images 404 (leanprovercommunity/mathlib :latest == toolchain
+base, no mathlib). Only raw.githubusercontent single files reachable (200) —
+insufficient (no tree listing; no olean cache; hours-long build). Conclusion:
+mathlib not practically obtainable here.
+Workaround: rewrote lean/Nivat.lean MATHLIB-FREE — encode "P_x(m,n) <= K" as a
+K-template covering (same trick as the z3 experiments), no Set.ncard needed. It
+COMPILES under the extracted Lean 4.10.0: NivatConjecture stated (open); sanity
+lemmas const_periodic/const_PatternLE_one/not_PatternLE_zero proved with 0 axioms,
+0 sorry. So the infinite statement is now machine-checked without mathlib.
+Still a checkpoint (statement compiled, conjecture unproved, no record beaten).
