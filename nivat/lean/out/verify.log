@@ -21,6 +21,11 @@ exit=0        # zero sorry
 # Also proved symbolically in NivatTheory.lean:
 #   sd_aperiodic          : the single-defect config (1 at origin) is APERIODIC
 #                           (no nonzero period) — axioms [propext]
+#   sd_PatternLE          : P_sd(m,n) <= m*n + 1 for every window (symbolic; uses
+#                           encode_inj, the cell-encoding injectivity lemma)
+#   nivat_bound_sharp     : Nivat's bound is OPTIMAL — sd is aperiodic yet has
+#                           P_sd(m,n) <= m*n+1, so the threshold m*n cannot be
+#                           relaxed to m*n+1
 #   PatternLE_mono_K       : P<=K and K<=K' imply P<=K'
 #   PatternLE_restrict_row : P_x(m,n) <= P_x(m+1,n)   (complexity monotone in height)
 #   PatternLE_restrict_col : P_x(m,n) <= P_x(m,n+1)   (monotone in width)

@@ -164,3 +164,11 @@ More GENERAL symbolic theorems (lean/NivatTheory.lean; [propext(,Quot.sound)] on
   monotone in window size (covering truncation).
 Together with periodic_pair_PatternLE this is a small machine-checked theory of
 block complexity. Checkpoints; beats no cited record.
+
+### 2026-07-06 (later) — sharpness completed generally (nivat_bound_sharp)
+
+Completed the general sharpness capstone in lean/NivatTheory.lean: sd_PatternLE
+(P_sd(m,n) <= m*n+1 for all windows, via encode_inj cell-encoding injectivity) and
+nivat_bound_sharp (sd aperiodic AND P_sd <= m*n+1 => Nivat's bound m*n is optimal,
+cannot relax to m*n+1). Axioms [propext, Quot.sound] only, 0 sorry, no native_decide.
+General symbolic theorem; checkpoint (does not settle Nivat; beats no record).

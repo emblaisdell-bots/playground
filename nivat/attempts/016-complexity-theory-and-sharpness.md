@@ -29,3 +29,19 @@ complexity, in mathlib-free Lean.
 but genuine machine-checked theory of block complexity (monotonicity, a periodic
 upper bound, and a sharpness witness). None beats a `[CITED]` record on (A)/(B)/(C);
 the hard direction remains Nivat itself. Reproduce `lean/verify.sh`.
+
+## Follow-up: sharpness completed (general, symbolic)
+
+`sd_PatternLE` and the capstone `nivat_bound_sharp` are now proved (axioms
+`[propext, Quot.sound]`, 0 sorry):
+
+- **`sd_PatternLE (m n)`**: `P_sd(m,n) ≤ m·n + 1` for every window — the `m·n+1`
+  templates (all-zero, plus one per cell) cover all windows. Uses `encode_inj`
+  (injectivity of the cell encoding `(x,y) ↦ x·n+y`, proved via `%`/`/`).
+- **`nivat_bound_sharp`**: `sd` is aperiodic AND `P_sd(m,n) ≤ m·n+1` for all `m,n`.
+  Hence **Nivat's threshold `m·n` is optimal** — relaxing the hypothesis to
+  `P ≤ m·n+1` would make the conjecture false (this witness). General, symbolic.
+
+This upgrades the earlier finite `[EXPERIMENTAL]`/`native_decide` sharpness evidence
+to a fully general machine-checked theorem. Still a checkpoint (it does not settle
+Nivat); beats no `[CITED]` record.

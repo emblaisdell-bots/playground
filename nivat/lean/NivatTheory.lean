@@ -244,4 +244,95 @@ theorem PatternLE_restrict_col {A : Type} (x : Config A) (m n K : Nat)
   have := congrFun hk (q.1, ⟨q.2.val, by omega⟩)
   simpa [windowAt] using this
 
+/-- Injectivity of the cell encoding `(x,y) ↦ x·n + y` on `[0,·)×[0,n)`. -/
+theorem encode_inj (n x y a b : Nat) (hy : y < n) (hb : b < n)
+    (h : x * n + y = a * n + b) : x = a ∧ y = b := by
+  have hn : 0 < n := Nat.lt_of_le_of_lt (Nat.zero_le _) hy
+  have hym : (x * n + y) % n = y := by
+    rw [Nat.add_comm, Nat.add_mul_mod_self_right]; exact Nat.mod_eq_of_lt hy
+  have hbm : (a * n + b) % n = b := by
+    rw [Nat.add_comm, Nat.add_mul_mod_self_right]; exact Nat.mod_eq_of_lt hb
+  have hyb : y = b := by rw [← hym, h, hbm]
+  subst hyb
+  have hxn : x * n = a * n := by omega
+  exact ⟨Nat.eq_of_mul_eq_mul_right hn hxn, rfl⟩
+
+/-- **Complexity of the single-defect config is `≤ m·n + 1`.** Every window is
+    either all-zero or has the defect in exactly one of its `m·n` cells, so the
+    `m·n + 1` templates (all-zero, plus one per cell) cover all windows. Symbolic. -/
+theorem sd_PatternLE (m n : Nat) : PatternLE sd m n (m * n + 1) := by
+  refine ⟨fun k => if k.val = 0 then (fun _ => 0)
+                   else (fun q => if q.1.val * n + q.2.val + 1 = k.val then 1 else 0), ?_⟩
+  intro P
+  by_cases hin : (0 ≤ -P.1 ∧ -P.1 < (m : Int)) ∧ (0 ≤ -P.2 ∧ -P.2 < (n : Int))
+  · -- defect sits in the window, at cell (a,b)
+    obtain ⟨⟨ha0, ham⟩, ⟨hb0, hbn⟩⟩ := hin
+    obtain ⟨a, hae⟩ : ∃ a : Nat, (a : Int) = -P.1 := ⟨(-P.1).toNat, Int.toNat_of_nonneg ha0⟩
+    obtain ⟨b, hbe⟩ : ∃ b : Nat, (b : Int) = -P.2 := ⟨(-P.2).toNat, Int.toNat_of_nonneg hb0⟩
+    have ham' : a < m := by
+      have h' : (a : Int) < (m : Int) := by rw [hae]; exact ham
+      exact_mod_cast h'
+    have hbn' : b < n := by
+      have h' : (b : Int) < (n : Int) := by rw [hbe]; exact hbn
+      exact_mod_cast h'
+    have hlt : a * n + b + 1 < m * n + 1 := by
+      have h3 : (a + 1) * n ≤ m * n := Nat.mul_le_mul_right n ham'
+      have h2 : (a + 1) * n = a * n + n := Nat.succ_mul a n
+      have hle : a * n + n ≤ m * n := by rw [← h2]; exact h3
+      omega
+    have hknz : ¬ (a * n + b + 1 = 0) := Nat.succ_ne_zero _
+    refine ⟨⟨a * n + b + 1, hlt⟩, ?_⟩
+    funext q
+    show sd (P.1 + ((q.1 : Nat) : Int), P.2 + ((q.2 : Nat) : Int))
+       = (if a * n + b + 1 = 0 then (fun _ => (0 : Nat))
+          else (fun q => if q.1.val * n + q.2.val + 1 = a * n + b + 1 then 1 else 0)) q
+    rw [if_neg hknz]
+    by_cases hcell : q.1.val = a ∧ q.2.val = b
+    · obtain ⟨eqa, eqb⟩ := hcell
+      have ca : ((q.1 : Nat) : Int) = (a : Int) := by exact_mod_cast eqa
+      have cb : ((q.2 : Nat) : Int) = (b : Int) := by exact_mod_cast eqb
+      have hP1 : P.1 + ((q.1 : Nat) : Int) = 0 := by rw [ca]; omega
+      have hP2 : P.2 + ((q.2 : Nat) : Int) = 0 := by rw [cb]; omega
+      have hleft : sd (P.1 + ((q.1 : Nat) : Int), P.2 + ((q.2 : Nat) : Int)) = 1 := by
+        simp [sd, hP1, hP2]
+      rw [hleft]; simp [eqa, eqb]
+    · have hleft : sd (P.1 + ((q.1 : Nat) : Int), P.2 + ((q.2 : Nat) : Int)) = 0 := by
+        by_cases hz : (P.1 + ((q.1 : Nat) : Int), P.2 + ((q.2 : Nat) : Int)) = (0, 0)
+        · exfalso
+          rw [Prod.mk.injEq] at hz
+          obtain ⟨hz1, hz2⟩ := hz
+          have qa : ((q.1 : Nat) : Int) = (a : Int) := by rw [hae]; omega
+          have qb : ((q.2 : Nat) : Int) = (b : Int) := by rw [hbe]; omega
+          exact hcell ⟨by exact_mod_cast qa, by exact_mod_cast qb⟩
+        · simp [sd, hz]
+      rw [hleft]
+      rw [if_neg]
+      intro hcon
+      have hcon' : q.1.val * n + q.2.val = a * n + b := by omega
+      exact hcell (encode_inj n q.1.val q.2.val a b q.2.isLt hbn' hcon')
+  · -- defect not in the window: all-zero window = template 0
+    refine ⟨⟨0, Nat.succ_pos _⟩, ?_⟩
+    funext q
+    show sd (P.1 + ((q.1 : Nat) : Int), P.2 + ((q.2 : Nat) : Int))
+       = (if (0 : Nat) = 0 then (fun _ => (0 : Nat))
+          else (fun q => if q.1.val * n + q.2.val + 1 = 0 then 1 else 0)) q
+    rw [if_pos rfl]
+    by_cases hz : (P.1 + ((q.1 : Nat) : Int), P.2 + ((q.2 : Nat) : Int)) = (0, 0)
+    · exfalso
+      rw [Prod.mk.injEq] at hz
+      obtain ⟨hz1, hz2⟩ := hz
+      have _hq1 : ((q.1 : Nat) : Int) < (m : Int) := by exact_mod_cast q.1.isLt
+      have _hq2 : ((q.2 : Nat) : Int) < (n : Int) := by exact_mod_cast q.2.isLt
+      apply hin
+      exact ⟨⟨by omega, by omega⟩, ⟨by omega, by omega⟩⟩
+    · simp [sd, hz]
+
+/-- **Sharpness of Nivat's bound.** The threshold `m·n` cannot be relaxed to
+    `m·n + 1`: `sd` is aperiodic yet satisfies `P_sd(m,n) ≤ m·n + 1` for every
+    window. -/
+theorem nivat_bound_sharp :
+    (∀ v : Int × Int, v ≠ (0, 0) → ¬ HasPeriod sd v)
+    ∧ (∀ m n : Nat, PatternLE sd m n (m * n + 1)) :=
+  ⟨sd_aperiodic, sd_PatternLE⟩
+
 end NivatTheory

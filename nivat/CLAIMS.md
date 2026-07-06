@@ -45,12 +45,19 @@ no mathlib/Batteries.
   **Not** Nivat and **not** a `[CITED]` record beat — it is the elementary/tractable
   direction. But it is real symbolic mathematics, machine-checked. Checkpoint.
 
-- **P6 `sd_aperiodic`** (sharpness direction) — the single-defect configuration
-  (`sd`: colour `1` at the origin, `0` elsewhere) is **aperiodic**: it has no
-  nonzero period. Symbolic proof (a period would force the defect to repeat at a
-  nonzero vector). This is the honest reason Nivat's bound cannot be relaxed to
-  `m·n + 1` — an aperiodic config with a single bounded defect exists (its finite
-  complexity `= m·n+1` on tori is the `[PROVEN]` native_decide `sharp_*` results).
+- **P6 `nivat_bound_sharp`** (sharpness — *fully general, symbolic*) — **Nivat's
+  bound `m·n` is optimal: it cannot be relaxed to `m·n + 1`.** Proved as the
+  conjunction of:
+  - `sd_aperiodic` — the single-defect config `sd` (colour `1` at the origin, `0`
+    elsewhere) is **aperiodic** (no nonzero period; a period would force the defect
+    to repeat), and
+  - `sd_PatternLE` — `P_sd(m,n) ≤ m·n + 1` for **every** window (every window is
+    all-zero or has the defect in exactly one of its `m·n` cells; uses the
+    cell-encoding injectivity lemma `encode_inj`).
+
+  So there is an aperiodic configuration meeting `P ≤ m·n+1` — the honest reason
+  the conjecture's hypothesis is `≤ m·n`, not `≤ m·n+1`. General ∀ m,n, proved by
+  reasoning (no enumeration).
 
 - **P7 `PatternLE_mono_K`, `PatternLE_restrict_row`, `PatternLE_restrict_col`** —
   block complexity is **monotone**: `P ≤ K ⇒ P ≤ K'` for `K ≤ K'`, and
