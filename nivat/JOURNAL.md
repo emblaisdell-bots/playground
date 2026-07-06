@@ -152,3 +152,15 @@ integer multiples of a period, induction via Int.rec) -> reduce_h/v/pair (anchor
 [propext, Quot.sound] only (kernel logic; NO native_decide, NO sorry). Genuine
 symbolic math; still the tractable/converse direction, beats NO cited record ->
 checkpoint, not termination. verify.sh now checks all three Lean files.
+
+### 2026-07-06 (later) — novel directions: complexity theory + sharpness (attempt 016)
+
+More GENERAL symbolic theorems (lean/NivatTheory.lean; [propext(,Quot.sound)] only,
+0 sorry, no native_decide):
+- sd_aperiodic: single-defect config (1 at origin) is aperiodic — the honest reason
+  Nivat's bound can't relax to mn+1 (aperiodic config with complexity mn+1 exists).
+- PatternLE_mono_K: complexity monotone in the bound K.
+- PatternLE_restrict_row/col: P(m,n) <= P(m+1,n) and P(m,n) <= P(m,n+1) — complexity
+  monotone in window size (covering truncation).
+Together with periodic_pair_PatternLE this is a small machine-checked theory of
+block complexity. Checkpoints; beats no cited record.

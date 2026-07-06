@@ -27,11 +27,13 @@ where actually hit — an honest, un-padded list, not a march to 300.
 | 013 | base (formal) | broaden proven coverage: more windows + 1D | generic window; `native_decide` | **PROVEN (checkpoint)** | `floor_4x4_w23/w33` (P≥7,10), `mh_L6_*` (1D E1); still beats NO record; `attempts/013` |
 | 014 | base (formal) | get mathlib → compile infinite statement | mathlib unobtainable; mathlib-free K-template encoding | **PROVEN (checkpoint)** | mathlib all-routes-blocked; `Nivat.lean` compiles mathlib-free, sanity lemmas 0 axioms/0 sorry; beats NO record; `attempts/014` |
 | 015 | converse (symbolic) | periodicity ⇒ complexity ≤ p·q, GENERAL | real proof: shift-invariance + ℤ-induction + mod reduction | **PROVEN, symbolic (checkpoint)** | `periodic_pair_PatternLE`, axioms `[propext,Quot.sound]` (NO native_decide), 0 sorry; not enumeration; beats NO record; `attempts/015`, `lean/NivatTheory.lean` |
+| 016 | complexity theory + sharpness | monotonicity + aperiodic witness | symbolic proofs (embedding/truncation; defect argument) | **PROVEN, symbolic (checkpoint)** | `sd_aperiodic`, `PatternLE_mono_K`, `PatternLE_restrict_row/col`; `[propext(,Quot.sound)]`, 0 sorry; beats NO record; `attempts/016` |
 
-**Why the list stops here.** The binding wall is environmental and was hit at
-setup: with no verifier, no (target, approach) on (A)/(B)/(C) can be carried to a
-`[PROVEN]` verdict. The three frontier targets (005/006/007) each also sit behind
-a genuine mathematical wall (expert machinery), independently confirmed by the
-fact that finite computation cannot express their universal implications.
-Padding to `MAX_ATTEMPTS=300` with throwaway stabs is explicitly banned by the
-prompt; the honest count is what is above.
+**Standing.** A mathlib-free Lean verifier was obtained (Docker mirror, #012), so
+`[PROVEN]` is reachable and used — for finite facts by `native_decide` (#012–014)
+and for GENERAL theorems by genuine symbolic proof (#015–016: a small block-complexity
+theory). None of these beats a `[CITED]` record: the frontier targets (005/006/007)
+are the universal/infinite statements at the research frontier (`k=5`, `c>1/2`,
+`t=3`), each behind expert machinery, and no new mathematical idea was found to
+settle one. So the loop does not terminate. Padding to `MAX_ATTEMPTS=300` with
+throwaway stabs is banned; the honest count is what is above.

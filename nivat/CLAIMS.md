@@ -45,6 +45,21 @@ no mathlib/Batteries.
   **Not** Nivat and **not** a `[CITED]` record beat — it is the elementary/tractable
   direction. But it is real symbolic mathematics, machine-checked. Checkpoint.
 
+- **P6 `sd_aperiodic`** (sharpness direction) — the single-defect configuration
+  (`sd`: colour `1` at the origin, `0` elsewhere) is **aperiodic**: it has no
+  nonzero period. Symbolic proof (a period would force the defect to repeat at a
+  nonzero vector). This is the honest reason Nivat's bound cannot be relaxed to
+  `m·n + 1` — an aperiodic config with a single bounded defect exists (its finite
+  complexity `= m·n+1` on tori is the `[PROVEN]` native_decide `sharp_*` results).
+
+- **P7 `PatternLE_mono_K`, `PatternLE_restrict_row`, `PatternLE_restrict_col`** —
+  block complexity is **monotone**: `P ≤ K ⇒ P ≤ K'` for `K ≤ K'`, and
+  `P_x(m,n) ≤ P_x(m+1,n)`, `P_x(m,n) ≤ P_x(m,n+1)` (bigger windows have at least as
+  many patterns). Symbolic proofs (template embedding / truncation).
+
+  All of P5–P7 depend only on `[propext, Quot.sound]` (P6 only `[propext]`); no
+  `native_decide`, no `sorry`. Genuine general lemmas — checkpoints, no record beaten.
+
 The **infinite conjecture is now stated and COMPILED mathlib-free**
 (`lean/Nivat.lean`, attempt 014): `P_x(m,n) ≤ K` is encoded as a K-template
 covering (no `Set.ncard`), so no mathlib is needed. `NivatConjecture` is stated

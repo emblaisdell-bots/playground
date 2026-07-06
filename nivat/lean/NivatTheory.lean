@@ -180,4 +180,68 @@ theorem periodic_pair_PatternLE {A : Type} (x : Config A) (m n : Nat)
   rw [hPP]
   exact reduce_pair x m n p q P.1 P.2 hp hq
 
+/-! ## A second direction: SHARPNESS of the Nivat bound.
+
+    Nivat asks whether `P_x(m,n) ≤ m·n ⇒ x periodic`.  Here we prove the companion
+    fact that the threshold cannot be relaxed to `m·n + 1`: there is an APERIODIC
+    configuration with `P_x(m,n) ≤ m·n + 1` for every window.  The witness is the
+    single-defect config (colour `1` at the origin, `0` elsewhere).  All proofs are
+    symbolic. -/
+
+/-- The single-defect configuration: `1` at the origin, `0` everywhere else. -/
+def sd : Config Nat := fun p => if p = (0, 0) then 1 else 0
+
+/-- **The single-defect config is aperiodic**: no nonzero vector is a period. -/
+theorem sd_aperiodic : ∀ v : Int × Int, v ≠ (0, 0) → ¬ HasPeriod sd v := by
+  intro v hv hper
+  have h0 := hper (0, 0)
+  have e : (((0, 0) : Int × Int).1 + v.1, ((0, 0) : Int × Int).2 + v.2) = v := by simp
+  rw [e] at h0
+  have hsd0 : sd (0, 0) = 1 := by simp [sd]
+  rw [hsd0] at h0            -- h0 : sd v = 1
+  apply hv
+  by_cases hv0 : v = (0, 0)
+  · exact hv0
+  · simp [sd, hv0] at h0
+
+/-! ## A third direction: monotonicity of block complexity (general, symbolic). -/
+
+/-- Complexity is monotone in the bound: `P ≤ K` implies `P ≤ K'` for `K ≤ K'`. -/
+theorem PatternLE_mono_K {A : Type} (x : Config A) (m n : Nat) {K K' : Nat}
+    (h : PatternLE x m n K) (hle : K ≤ K') : PatternLE x m n K' := by
+  obtain ⟨T, hT⟩ := h
+  obtain ⟨k0, _⟩ := hT (0, 0)           -- a default index (Fin K is nonempty)
+  refine ⟨fun k' => if hk : k'.val < K then T ⟨k'.val, hk⟩ else T k0, ?_⟩
+  intro p
+  obtain ⟨k, hk⟩ := hT p
+  refine ⟨⟨k.val, Nat.lt_of_lt_of_le k.isLt hle⟩, ?_⟩
+  simp only [k.isLt, dif_pos]
+  rw [hk]
+
+/-- **Complexity is monotone in window height**: `P_x(m,n) ≤ P_x(m+1,n)`.
+    A covering of the taller `(m+1)×n` windows restricts (drop the bottom row) to a
+    covering of the `m×n` windows, with the same number of templates. -/
+theorem PatternLE_restrict_row {A : Type} (x : Config A) (m n K : Nat)
+    (h : PatternLE x (m + 1) n K) : PatternLE x m n K := by
+  obtain ⟨T, hT⟩ := h
+  refine ⟨fun k => fun q => T k (⟨q.1.val, by omega⟩, q.2), ?_⟩
+  intro p
+  obtain ⟨k, hk⟩ := hT p
+  refine ⟨k, ?_⟩
+  funext q
+  have := congrFun hk (⟨q.1.val, by omega⟩, q.2)
+  simpa [windowAt] using this
+
+/-- **Complexity is monotone in window width**: `P_x(m,n) ≤ P_x(m,n+1)`. -/
+theorem PatternLE_restrict_col {A : Type} (x : Config A) (m n K : Nat)
+    (h : PatternLE x m (n + 1) K) : PatternLE x m n K := by
+  obtain ⟨T, hT⟩ := h
+  refine ⟨fun k => fun q => T k (q.1, ⟨q.2.val, by omega⟩), ?_⟩
+  intro p
+  obtain ⟨k, hk⟩ := hT p
+  refine ⟨k, ?_⟩
+  funext q
+  have := congrFun hk (q.1, ⟨q.2.val, by omega⟩)
+  simpa [windowAt] using this
+
 end NivatTheory

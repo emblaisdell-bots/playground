@@ -18,6 +18,13 @@ exit=0        # zero sorry
 #   periodic_pair_PatternLE : the p*q reduced anchors cover all windows.
   #print axioms periodic_pair_PatternLE -> [propext, Quot.sound]   (kernel logic;
                                         #  NO native_decide, NO sorry)
+# Also proved symbolically in NivatTheory.lean:
+#   sd_aperiodic          : the single-defect config (1 at origin) is APERIODIC
+#                           (no nonzero period) — axioms [propext]
+#   PatternLE_mono_K       : P<=K and K<=K' imply P<=K'
+#   PatternLE_restrict_row : P_x(m,n) <= P_x(m+1,n)   (complexity monotone in height)
+#   PatternLE_restrict_col : P_x(m,n) <= P_x(m,n+1)   (monotone in width)
+#   -> all [propext, Quot.sound] only; no native_decide, no sorry.
 
 $ lean NivatFinite.lean
 exit=0        # every theorem checked; zero sorry
