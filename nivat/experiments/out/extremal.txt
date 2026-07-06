@@ -1,0 +1,38 @@
+============================================================
+Z_3 x Z_3, window 2x2, extremal primitive P=5
+  # extremal primitive configs: 18
+  defect-set shape: {'trivial(<=1 cell)': 18}
+  #minority cells: {1: 18}
+   example [trivial(<=1 cell)]: 000/000/001
+============================================================
+Z_3 x Z_4, window 2x2, extremal primitive P=5
+  # extremal primitive configs: 48
+  defect-set shape: {'trivial(<=1 cell)': 24, 'not-a-line': 24}
+  #minority cells: {1: 24, 2: 24}
+   example [trivial(<=1 cell)]: 0000/0000/0001
+   example [not-a-line]: 0000/0001/0100
+============================================================
+Z_4 x Z_4, window 2x2, extremal primitive P=5
+  # extremal primitive configs: 192
+  defect-set shape: {'trivial(<=1 cell)': 32, 'not-a-line': 160}
+  #minority cells: {1: 32, 2: 64, 3: 96}
+   example [trivial(<=1 cell)]: 0000/0000/0000/0001
+   example [not-a-line]: 0000/0000/0001/0100
+============================================================
+Z_3 x Z_5, window 2x2, extremal primitive P=5
+  # extremal primitive configs: 120
+  defect-set shape: {'trivial(<=1 cell)': 30, 'single-row': 30, 'not-a-line': 60}
+  #minority cells: {1: 30, 2: 90}
+   example [trivial(<=1 cell)]: 00000/00000/00001
+   example [single-row]: 00000/00000/00101
+   example [not-a-line]: 00000/00001/00100
+============================================================
+Z_4 x Z_5, window 2x2, extremal primitive P=5
+  # extremal primitive configs: 720
+  defect-set shape: {'trivial(<=1 cell)': 40, 'single-row': 40, 'not-a-line': 640}
+  #minority cells: {1: 40, 2: 200, 3: 360, 4: 120}
+   example [trivial(<=1 cell)]: 00000/00000/00000/00001
+   example [single-row]: 00000/00000/00000/00101
+   example [not-a-line]: 00000/00000/00001/00100
+
+saved -> out/extremal.json

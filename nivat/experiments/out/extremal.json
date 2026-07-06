@@ -1,0 +1,358 @@
+[
+ {
+  "N": 3,
+  "M": 3,
+  "window": "2x2",
+  "target_P": 5,
+  "num_extremal_primitive": 18,
+  "defect_shape_counts": {
+   "trivial(<=1 cell)": 18
+  },
+  "minority_size_counts": {
+   "1": 18
+  },
+  "example_per_shape": {
+   "trivial(<=1 cell)": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "N": 3,
+  "M": 4,
+  "window": "2x2",
+  "target_P": 5,
+  "num_extremal_primitive": 48,
+  "defect_shape_counts": {
+   "trivial(<=1 cell)": 24,
+   "not-a-line": 24
+  },
+  "minority_size_counts": {
+   "1": 24,
+   "2": 24
+  },
+  "example_per_shape": {
+   "trivial(<=1 cell)": [
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ],
+   "not-a-line": [
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     1,
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ {
+  "N": 4,
+  "M": 4,
+  "window": "2x2",
+  "target_P": 5,
+  "num_extremal_primitive": 192,
+  "defect_shape_counts": {
+   "trivial(<=1 cell)": 32,
+   "not-a-line": 160
+  },
+  "minority_size_counts": {
+   "1": 32,
+   "2": 64,
+   "3": 96
+  },
+  "example_per_shape": {
+   "trivial(<=1 cell)": [
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ],
+   "not-a-line": [
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     1,
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ {
+  "N": 3,
+  "M": 5,
+  "window": "2x2",
+  "target_P": 5,
+  "num_extremal_primitive": 120,
+  "defect_shape_counts": {
+   "trivial(<=1 cell)": 30,
+   "single-row": 30,
+   "not-a-line": 60
+  },
+  "minority_size_counts": {
+   "1": 30,
+   "2": 90
+  },
+  "example_per_shape": {
+   "trivial(<=1 cell)": [
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     1
+    ]
+   ],
+   "single-row": [
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1,
+     0,
+     1
+    ]
+   ],
+   "not-a-line": [
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     0,
+     1,
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ {
+  "N": 4,
+  "M": 5,
+  "window": "2x2",
+  "target_P": 5,
+  "num_extremal_primitive": 720,
+  "defect_shape_counts": {
+   "trivial(<=1 cell)": 40,
+   "single-row": 40,
+   "not-a-line": 640
+  },
+  "minority_size_counts": {
+   "1": 40,
+   "2": 200,
+   "3": 360,
+   "4": 120
+  },
+  "example_per_shape": {
+   "trivial(<=1 cell)": [
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     1
+    ]
+   ],
+   "single-row": [
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1,
+     0,
+     1
+    ]
+   ],
+   "not-a-line": [
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     0,
+     1,
+     0,
+     0
+    ]
+   ]
+  }
+ }
+]
